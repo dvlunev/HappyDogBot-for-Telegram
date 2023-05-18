@@ -8,7 +8,6 @@
 [Тамара Золотовская](https://github.com/TamaraZolotovskaya)<br>
 [Дмитрий Лунев](https://github.com/dvlunev)<br>
 [Софья Беседина](https://github.com/sofibesedina444)<br>
-[Тамара Золотовская](https://github.com/TamaraZolotovskaya)<br>
 [Роман Леонтьев](https://github.com/LeoRoA)<br>
 [Денис Фисенко](https://github.com/MoXuT0)<br>
 
