@@ -1,17 +1,17 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Montserrat&weight=600&size=25&color=010304&background=FFFFFF00&center=%D0%9B%D0%9E%D0%96%D0%AC&vCenter=%D0%9B%D0%9E%D0%96%D0%AC&width=435&lines=HappyPetBot)](https://git.io/typing-svg) 
 
 
-Телеграмм-бот, который  отвечает на популярные вопросы людей о том, что нужно знать и уметь, чтобы забрать животное из приюта.
+A Telegram bot that answers people's popular questions about what you need to know and be able to do in order to take an animal from a shelter.
 
 
-## Команда разработчиков: <br>
-[Тамара Золотовская](https://github.com/TamaraZolotovskaya)<br>
-[Дмитрий Лунев](https://github.com/dvlunev)<br>
-[Софья Беседина](https://github.com/sofibesedina444)<br>
-[Роман Леонтьев](https://github.com/LeoRoA)<br>
-[Денис Фисенко](https://github.com/MoXuT0)<br>
+## Development team: <br>
+- [TamaraZolotovskaya](https://github.com/TamaraZolotovskaya)<br>
+- [dvlunev](https://github.com/dvlunev)<br>
+- [sofibesedina444](https://github.com/sofibesedina444)<br>
+- [LeoRoA](https://github.com/LeoRoA)<br>
+- [MoXuT0](https://github.com/MoXuT0)<br>
 
-## Технологии в проекте ##
+## Technologies in the project ##
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white) ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) 
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
@@ -30,86 +30,86 @@ Backend:
 SQL:
 - PostgreSQL 
 
-### Функционал для пользователя: ###
+### User`s functionality: ###
 
-**Этап 0. Определение запроса** 
+**Stage 0. Request definition** 
 <details>
-<summary>Описание</summary>
+<summary>Description</summary>
 
-*Это входная точка общения бота с пользователем.* 
+*This is the entry point for the bot to communicate with the user.* 
 
-- Бот приветствует нового пользователя, рассказывает о себе и может выдать меню на выбор, с каким запросом пришел пользователь:
-    - Узнать информацию о приюте (этап 1).
-    - Как взять собаку из приюта (этап 2).
-    - Прислать отчет о питомце (этап 3).
-    - Позвать волонтера.
-- Если ни один из вариантов не подходит, то бот может позвать волонтера.
-- Если пользователь уже обращался к боту ранее, то новое обращение начинается с выбора запроса, с которым пришел пользователь.
+- The bot welcomes a new user, talks about itself and can display a menu to choose what request the user came with:
+     - Find out information about the shelter (stage 1).
+     - How to adopt a dog from a shelter (stage 2).
+     - Submit a pet report (step 3).
+     - Call a volunteer.
+- If none of the options are suitable, then the bot can call a volunteer.
+- If the user has already contacted the bot before, then a new request begins with the selection of the request with which the user came.
 </details>
 
-**Этап 1. Консультация с новым пользователем** 
+**Stage 1. New user consultation** 
 <details>
-<summary>Описание</summary>
+<summary>Description</summary>
 
-*На данном этапе бот должен давать вводную информацию о приюте: где он находится, как и когда работает, какие правила пропуска на территорию приюта, правила нахождения внутри и общения с собаками.* 
+*At this stage, the bot should provide introductory information about the shelter: where it is located, how and when it works, what are the rules for entering the shelter, the rules for staying inside and communicating with dogs.*
 
-- Бот приветствует пользователя.
-- Бот может рассказать о приюте.
-- Бот может выдать расписание работы приюта и адрес, схему проезда.
-- Бот может выдать общие рекомендации о технике безопасности на территории приюта.
-- Бот может принять и записать контактные данные для связи.
-- Если бот не может ответить на вопросы клиента, то можно позвать волонтера.
+- The bot welcomes the user.
+- The bot can tell you about the shelter.
+- The bot can give the shelter's work schedule and address, directions.
+- The bot can issue general safety recommendations on the territory of the shelter.
+- The bot can accept and record contact details for communication.
+- If the bot cannot answer the client's questions, then you can call a volunteer.
 </details>
 
-**Этап 2. Консультация с потенциальным хозяином животного из приюта** 
+**Stage 2. Consultation with a potential owner of an animal from a shelter** 
 <details>
-<summary>Описание</summary>
+<summary>Description</summary>
 
-*На данном этапе бот помогает потенциальным «усыновителям» собаки из приюта разобраться с бюрократическими (как оформить договор) и бытовыми (как подготовиться к жизни с собакой) вопросами.* 
+*At this stage, the bot helps potential adopters of a dog from a shelter deal with bureaucratic (how to draw up a contract) and everyday (how to prepare for life with a dog) issues.*
 
-*Основная задача — дать максимально полную информацию о том, как предстоит подготовиться человеку ко встрече с новым членом семьи.* 
+*The main task is to give the most complete information about how a person has to prepare for a meeting with a new family member.*
 
-- Бот приветствует пользователя.
-- Бот может выдать правила знакомства с собакой до того, как можно забрать ее из приюта.
-- Бот может выдать список документов, необходимых для того, чтобы взять собаку из приюта.
-- Бот может выдать список рекомендаций по транспортировке животного.
-- Бот может выдать список рекомендаций по обустройству дома для щенка.
-- Бот может выдать список рекомендаций по обустройству дома для взрослой собаки.
-- Бот может выдать список рекомендаций по обустройству дома для собаки с ограниченными возможностями (зрение, передвижение).
-- Бот может выдать советы кинолога по первичному общению с собакой.
-- Бот может выдать рекомендации по проверенным кинологам для дальнейшего обращения к ним.
-- Бот может выдать список причин, почему могут отказать и не дать забрать собаку из приюта.
-- Бот может принять и записать контактные данные для связи.
-- Если бот не может ответить на вопросы клиента, то можно позвать волонтера.
+- The bot welcomes the user.
+- The bot can issue the rules for getting to know the dog before you can pick it up from the shelter.
+- The bot can issue a list of documents required in order to adopt a dog from a shelter.
+- The bot can issue a list of recommendations for transporting the animal.
+- The bot can give a list of recommendations for home improvement for a puppy.
+- The bot can give a list of recommendations for home improvement for an adult dog.
+- The bot can issue a list of recommendations for home improvement for a dog with disabilities (vision, movement).
+- The bot can give cynologist`s advices on the initial communication with the dog.
+- The bot can issue recommendations on proven dog handlers for further referral to them.
+- The bot can give a list of reasons why they can refuse and not allow the dog to be taken from the shelter.
+- The bot can accept and record contact details for communication.
+- If the bot cannot answer the client's questions, then you can call a volunteer.
 </details>
 
-**Этап 3. Ведение питомца** 
+**Stage 3. Keeping a pet** 
 <details>
-<summary>Описание</summary>
+<summary>Description</summary>
 
-*После того, как новый усыновитель забрал собаку из приюта, он обязан в течение месяца присылать информацию о том, как животное чувствует себя на новом месте. В ежедневный отчет входит следующая информация:* 
+*After the new adopter took the dog from the shelter, he is obliged to send information about how the animal feels in the new place within a month. The daily report includes the following information:*
 
-- *Фото животного.*
-- *Рацион животного.*
-- *Общее самочувствие и привыкание к новому месту.*
-- *Изменение в поведении: отказ от старых привычек, приобретение новых.*
+- *Photo of the animal.*
+- * Animal diet. *
+- *General well-being and getting used to a new place.*
+- *Change in behavior: abandoning old habits, acquiring new ones.*
 
-*Отчет нужно присылать каждый день, ограничений в сутках по времени сдачи отчета нет. Раз в два-три дня волонтеры отсматривают все присланные отчеты. В случае, если усыновитель недолжным образом заполнял отчет, волонтер через бота может дать обратную связь в стандартной форме: «Дорогой усыновитель, мы заметили, что ты заполняешь отчет не так подробно, как необходимо. Пожалуйста, подойди ответственнее к этому занятию. В противном случае волонтеры приюта будут обязаны самолично проверять условия содержания собаки».* 
+*The report must be sent every day, there are no restrictions in the day on the time of submission of the report. Once every two or three days, volunteers review all submitted reports. If the adopter did not fill out the report properly, the volunteer can give feedback through the bot in the standard form: “Dear adopter, we noticed that you are not filling out the report in as much detail as necessary. Please take a more responsible approach to this activity. Otherwise, the shelter volunteers will be required to personally check the conditions of the dog.”*
 
-*В базу новых усыновителей пользователь попадает через волонтера, который его туда заносит. Задача бота — принимать на вход информацию и в случае, если пользователь не присылает информацию, напоминать об этом, а если проходит более 2 дней, то отправлять запрос волонтеру на связь с усыновителем.* 
+*A user enters the database of new adopters through a volunteer who brings him there. The task of the bot is to accept information as input and, if the user does not send information, remind about it, and if more than 2 days pass, then send a request to the volunteer to contact the adopter.*
 
-*Как только период в 30 дней заканчивается, волонтеры принимают решение о том, остается собака у хозяина или нет. Испытательный срок может быть пройден, может быть продлен на любое количество дней, а может быть не пройден.* 
+*Once the 30 day period ends, the volunteers decide whether the dog stays with the owner or not. The trial period may be passed, may be extended for any number of days, or may not be passed.*
 
-- Бот может прислать форму ежедневного отчета.
-- Если пользователь прислал только фото, то бот может запросить текст.
-- Если пользователь прислал только текст, то бот может запросить фото.
-- Бот может выдать предупреждение о том, что отчет заполняется плохо (делает волонтер): 
-«*Дорогой усыновитель, мы заметили, что ты заполняешь отчет не так подробно, как необходимо. Пожалуйста, подойди ответственнее к этому занятию. В противном случае волонтеры приюта будут обязаны самолично проверять условия содержания собаки».*
-- Если усыновитель прошел испытательный срок, то бот поздравляет его стандартным сообщением.
-- Если усыновителю было назначено дополнительное время испытательного срока, то бот сообщает ему и указывает количество дополнительных дней.
-- Если усыновитель не прошел испытательный срок, то бот уведомляет его об этом и дает инструкции по дальнейшим шагам.
-- Если бот не может ответить на вопросы клиента, то можно позвать волонтера.
+- The bot can send a daily report form.
+- If the user sent only a photo, then the bot can request a text.
+- If the user sent only text, then the bot can request a photo.
+- The bot can issue a warning that the report is filled out poorly (made by a volunteer):
+“*Dear adoptive parent, we have noticed that you are not filling out the report in as much detail as necessary. Please take a more responsible approach to this activity. Otherwise, the shelter volunteers will be required to personally check the conditions of the dog.”*
+- If the adopter has passed the trial period, then the bot congratulates him with a standard message.
+- If the adopter was assigned an additional probation period, the bot informs him and indicates the number of additional days.
+- If the adopter has not passed the trial period, the bot notifies him of this and gives instructions on further steps.
+- If the bot cannot answer the client's questions, then you can call a volunteer.
 </details>
 
-## Демонстрация работы Telegram бота ##
-Демострацию работы приложения можно найти [тут](https://github.com/TamaraZolotovskaya/HappyDogBot/blob/master/FourTeam_HappyPetBot.mp4)
+## Demonstration of the Telegram bot ##
+A demo of the application can be found [here](https://github.com/TamaraZolotovskaya/HappyDogBot/blob/master/FourTeam_HappyPetBot.mp4)
