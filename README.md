@@ -1,15 +1,6 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Montserrat&weight=600&size=25&color=010304&background=FFFFFF00&center=%D0%9B%D0%9E%D0%96%D0%AC&vCenter=%D0%9B%D0%9E%D0%96%D0%AC&width=435&lines=HappyPetBot)](https://git.io/typing-svg) 
 
-
 A Telegram bot that answers people's popular questions about what you need to know and be able to do in order to take an animal from a shelter.
-
-
-## Development team: <br>
-- [TamaraZolotovskaya](https://github.com/TamaraZolotovskaya)<br>
-- [dvlunev](https://github.com/dvlunev)<br>
-- [sofibesedina444](https://github.com/sofibesedina444)<br>
-- [LeoRoA](https://github.com/LeoRoA)<br>
-- [MoXuT0](https://github.com/MoXuT0)<br>
 
 ## Technologies in the project ##
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white) ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) 
@@ -113,3 +104,10 @@ SQL:
 
 ## Demonstration of the Telegram bot ##
 A demo of the application can be found [here](https://github.com/TamaraZolotovskaya/HappyDogBot/blob/master/FourTeam_HappyPetBot.mp4)
+
+## Development team: <br>
+- [TamaraZolotovskaya](https://github.com/TamaraZolotovskaya)<br>
+- [dvlunev](https://github.com/dvlunev)<br>
+- [sofibesedina444](https://github.com/sofibesedina444)<br>
+- [LeoRoA](https://github.com/LeoRoA)<br>
+- [MoXuT0](https://github.com/MoXuT0)<br>
