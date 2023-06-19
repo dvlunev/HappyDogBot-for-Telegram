@@ -1,6 +1,5 @@
 package com.team4.happydogbot.service;
 
-import com.team4.happydogbot.config.BotConfig;
 import com.team4.happydogbot.entity.ExaminationStatus;
 import com.team4.happydogbot.entity.ReportDog;
 import com.team4.happydogbot.exception.ReportDogNotFoundException;
@@ -25,7 +24,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 /**
- * Тест - класс для проверки CRUD операций в классе - сервисе отчета о собаке
+ * Test class to test CRUD operations in dog report service class
+ *
  * @see ReportDog
  * @see ReportDogRepository
  * @see ReportDogService
@@ -33,22 +33,17 @@ import static org.mockito.Mockito.when;
  */
 @ExtendWith(MockitoExtension.class)
 public class ReportDogServiceTest {
-    @Mock
-    private BotConfig botConfig;
+
     @Mock
     private ReportDogRepository reportDogRepository;
     @InjectMocks
     private ReportDogService reportDogService;
-    @Mock
-    private Bot bot;
 
     private final ReportDog expected = new ReportDog();
     private final ReportDog expected1 = new ReportDog();
 
     @BeforeEach
     public void setUp() {
-//        MockitoAnnotations.initMocks(this);
-
         expected.setId(1L);
         expected.setReportDate(LocalDate.of(2023, 3, 24));
         expected.setFileId("Test124578");
@@ -63,13 +58,13 @@ public class ReportDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в ReportDogService
+     * Method Testing <b>add()</b> in ReportDogService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportDogRepository::save</b>,
-     * возвращается отчет о собаке <b>expected</b>
+     * Mockito: when the method is called <b>ReportDogRepository::save</b>,
+     * dog report returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка добавления нового отчета о собаке и сохранения его в базе данных")
+    @DisplayName("Checking to add a new dog report and save it to the database")
     public void addReportDogTest() {
         when(reportDogRepository.save(any(ReportDog.class))).thenReturn(expected);
 
@@ -82,13 +77,13 @@ public class ReportDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в ReportDogService
+     * Method Testing <b>get()</b> in ReportDogService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportDogRepository::findById</b>,
-     * возвращается отчет о собаке <b>expected</b>
+     * Mockito: when the method is called <b>ReportDogRepository::findById</b>,
+     * dog report returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка поиска отчета о собаке по id и возвращения его из базы данных")
+    @DisplayName("Checking if a dog report is searched for by id and returned from the database")
     public void getByIdReportDogTest() {
         when(reportDogRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
 
@@ -101,14 +96,15 @@ public class ReportDogServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>get()</b> в ReportDogService
+     * Test for throwing an exception in a method <b>get()</b> in ReportDogService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportDogRepository::findById</b>,
-     * выбрасывается исключение <b>ReportDogNotFoundException</b>
+     * Mockito: when the method is called <b>ReportDogRepository::findById</b>,
+     * an exception is thrown <b>ReportDogNotFoundException</b>
+     *
      * @throws ReportDogNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе поиска отчета о собаке")
+    @DisplayName("Checking for exception throw in dog report search method")
     public void getByIdReportDogExceptionTest() {
         when(reportDogRepository.findById(any(Long.class))).thenThrow(ReportDogNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(ReportDogNotFoundException.class,
@@ -116,13 +112,13 @@ public class ReportDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в ReportDogService
+     * Method Testing <b>update()</b> in ReportDogService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportDogRepository::findById</b> и <b>ReportDogRepository::save</b>,
-     * возвращается отредактированный отчет о собаке <b>expected1</b>
+     * Mockito: when the method is called <b>ReportDogRepository::findById</b> и <b>ReportDogRepository::save</b>,
+     * edited dog report returns <b>expected1</b>
      */
     @Test
-    @DisplayName("Проверка редактирования отчета о собаке, сохранения и возвращения его из базы данных")
+    @DisplayName("Checking the editing of the dog report, saving and returning it from the database")
     public void updateReportDogTest() {
         when(reportDogRepository.findById(any(Long.class))).thenReturn(Optional.of(expected1));
         when(reportDogRepository.save(any(ReportDog.class))).thenReturn(expected1);
@@ -136,14 +132,15 @@ public class ReportDogServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>update()</b> в ReportDogService
+     * Test for throwing an exception in a method <b>update()</b> in ReportDogService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportDogRepository::findById</b>,
-     * выбрасывается исключение <b>ReportDogNotFoundException</b>
+     * Mockito: when the method is called <b>ReportDogRepository::findById</b>,
+     * an exception is thrown <b>ReportDogNotFoundException</b>
+     *
      * @throws ReportDogNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе редактирования отчета о собаке")
+    @DisplayName("Checking for an exception throw in the dog report edit method")
     public void updateReportDogExceptionTest() {
         when(reportDogRepository.findById(any(Long.class))).thenThrow(ReportDogNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(ReportDogNotFoundException.class,
@@ -151,13 +148,13 @@ public class ReportDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в ReportDogService
+     * Method Testing <b>getAll()</b> in ReportDogService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportDogRepository::findAll</b>,
-     * возвращается коллекция отчетов о собаках <b>reportDogs</b>
+     * Mockito: when the method is called <b>ReportDogRepository::findAll</b>,
+     * dog report collection returns <b>reportDogs</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех отчетов о собаках и возвращения их из базы данных")
+    @DisplayName("Checking to find all dog reports and return them from the database")
     public void getAllReportDogsTest() {
         List<ReportDog> reportDogs = new ArrayList<>();
         reportDogs.add(expected);
@@ -172,13 +169,13 @@ public class ReportDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в ReportDogService
+     * Method Testing <b>getAll()</b> in ReportDogService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportDogRepository::findAll</b>,
-     * возвращается пустая коллекция собак <b>adopterDogs</b>
+     * Mockito: when the method is called <b>ReportDogRepository::findAll</b>,
+     * returning an empty dog report collection <b>adopterDogs</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех отчетов о собаках и возвращения из базы данных пустого списка")
+    @DisplayName("Checking to find all dog reports and return an empty list from the database")
     public void getAllReportDogsTestReturnsEmpty() {
         List<ReportDog> reportDogs = new ArrayList<>();
         when(reportDogRepository.findAll()).thenReturn(reportDogs);

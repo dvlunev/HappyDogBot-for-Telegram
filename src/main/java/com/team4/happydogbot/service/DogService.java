@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 /**
- *Класс - сервис, содержащий набор CRUD операций над объектом Dog
+ * Service class containing a set of CRUD operations on the Dog object
+ *
  * @see Dog
  * @see DogRepository
  */
@@ -24,7 +25,8 @@ public class DogService {
     }
 
     /**
-     * Метод создает новую собаку
+     * The method creates a new dog
+     *
      * @param dog
      * @return {@link DogRepository#save(Object)}
      * @see DogService
@@ -36,10 +38,11 @@ public class DogService {
     }
 
     /**
-     * Метод находит и возвращает собаку по id
+     * The method finds and returns a dog by id
+     *
      * @param id
      * @return {@link DogRepository#findById(Object)}
-     * @throws DogNotFoundException если собака с указанным id не найдена
+     * @throws DogNotFoundException if the dog with the specified id is not found
      * @see DogService
      */
     public Dog get(Long id) {
@@ -50,10 +53,11 @@ public class DogService {
     }
 
     /**
-     * Метод находит и удаляет собаку по id
+     * The method finds and removes a dog by id
+     *
      * @param id
-     * @return true если удаление прошло успешно
-     * @throws DogNotFoundException если собака с указанным id не найдена
+     * @return true if the removal was successful
+     * @throws DogNotFoundException if the dog with the specified id is not found
      */
     public boolean remove(Long id) {
         log.info("Was invoked method to remove a dog by id={}", id);
@@ -69,10 +73,11 @@ public class DogService {
     }
 
     /**
-     * Метод обновляет и возвращает собаку
+     * The method updates and returns the dog
+     *
      * @param dog
      * @return {@link DogRepository#save(Object)}
-     * @throws DogNotFoundException если собака с указанным id не найдена
+     * @throws DogNotFoundException if the dog with the specified id is not found
      * @see DogService
      */
     public Dog update(Dog dog) {
@@ -90,7 +95,8 @@ public class DogService {
     }
 
     /**
-     * Метод находит и возвращает всех собак
+     * The method finds and returns all dogs
+     *
      * @return {@link DogRepository#findById(Object)}
      * @see DogService
      */

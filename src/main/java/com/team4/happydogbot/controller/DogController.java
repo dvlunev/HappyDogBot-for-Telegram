@@ -18,15 +18,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 /**
- * Класс - контроллер для объекта Dog, содержащий набор API endpoints
- * для обращения к маршрутам отдельными HTTP методами
+ * Controller class for a Dog object containing a set of API endpoints
+ * for accessing routes with separate HTTP methods
+ *
  * @see Dog
  * @see DogService
  * @see DogController
  */
 @RestController
 @RequestMapping("/dog")
-@Tag(name = "Собаки", description = "CRUD-операции и другие эндпоинты для работы с собаками")
+@Tag(name = "Dogs", description = "CRUD operations and other endpoints for working with dogs")
 public class DogController {
 
     private final DogService dogService;
@@ -36,13 +37,13 @@ public class DogController {
     }
 
     @Operation(
-            summary = "Добавление собаки",
-            description = "Добавление новой собаки из тела запроса"
+            summary = "Adding a dog",
+            description = "Adding a new dog from the request body"
     )
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Собака была добавлена",
+                    description = "The dog has been added",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -52,7 +53,7 @@ public class DogController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Некорректные параметры собаки",
+                    description = "Incorrect dog parameters",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -68,11 +69,11 @@ public class DogController {
         return ResponseEntity.ok(dog);
     }
 
-    @Operation(summary = "Получение собаки по id",
+    @Operation(summary = "Getting a dog by id",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Собака, найденная по id",
+                            description = "A dog found by id",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = Dog.class)
@@ -87,7 +88,7 @@ public class DogController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Собака была найдена",
+                    description = "The dog was found",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -97,7 +98,7 @@ public class DogController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Собака не была найдена",
+                    description = "The dog was not found",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -116,11 +117,11 @@ public class DogController {
         return ResponseEntity.ok(dog);
     }
 
-    @Operation(summary = "Удаление собаки по id",
+    @Operation(summary = "Deleting a dog by id",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Собака, найденная по id",
+                            description = "A dog found by id",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = Dog.class)
@@ -135,11 +136,11 @@ public class DogController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Собака удалена"
+                    description = "Dog removed"
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Собака не была удалена"
+                    description = "The cat has not been removed"
             )
     }
     )
@@ -152,13 +153,13 @@ public class DogController {
     }
 
     @Operation(
-            summary = "Изменение данных собаки",
-            description = "Обновление данных собаки из тела запроса"
+            summary = "Changing dog details",
+            description = "Update dog data from request body"
     )
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Данные собаки обновлены",
+                    description = "Dog data updated",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -168,7 +169,7 @@ public class DogController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Данные собаки не обновлены",
+                    description = "Dog data not updated",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -184,11 +185,11 @@ public class DogController {
         return ResponseEntity.ok(dog);
     }
 
-    @Operation(summary = "Просмотр всех собак",
+    @Operation(summary = "View all dogs",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Собаки найдены",
+                            description = "Dogs found",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = Dog.class)

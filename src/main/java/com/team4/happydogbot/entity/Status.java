@@ -1,20 +1,21 @@
 package com.team4.happydogbot.entity;
 
 /**
- * Класс, содержащий параметры для всех стадий пользовательского состояния
+ * Class containing parameters for all user state stages
+ *
  * @see AdopterCat
  * @see AdopterDog
  */
 public enum Status {
-    USER("Пользователь выбрал приют"),
-    REGISTRATION("Пользователь оставил свои контактные данные"),
-    ADOPTION_DENIED("Потенциальному родителю отказано в усыновлении животного"),
-    PROBATION("Назначен испытательный срок - 30 календарных дней"),
-    ADDITIONAL_PERIOD_14("Назначен дополнительный испытательный срок - 14 календарных дней"),
+    USER("The user has chosen a shelter"),
+    REGISTRATION("The user left his contact details"),
+    ADOPTION_DENIED("Prospective parent refused to adopt an animal"),
+    PROBATION("Probationary period - 30 calendar days"),
+    ADDITIONAL_PERIOD_14("An additional probationary period was assigned - 14 calendar days"),
     //исправлено по обновленному ТЗ
-    ADDITIONAL_PERIOD_30("Назначен дополнительный испытательный срок - 30 календарных дней"),
+    ADDITIONAL_PERIOD_30("An additional probationary period is assigned - 30 calendar days"),
     //дополнено по обновленному ТЗ
-    FINISHED_PROBATION_PERIOD("Испытательный срок пройден - работа с усыновителем закончена");
+    FINISHED_PROBATION_PERIOD("The probationary period has passed - work with the adoptive parent is over");
 
     private final String status;
 

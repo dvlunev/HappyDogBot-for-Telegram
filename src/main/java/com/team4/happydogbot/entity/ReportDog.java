@@ -10,9 +10,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 /**
- * Класс, описывающий отчеты пользователей о состоянии животного
+ * A class that describes user reports on the state of the animal
  *
- * @param 'examination' поле для статуса проверки (выполняется волонтером) отчета (по умолчанию - null)
+ * @param 'examination' field for examination status (performed by a volunteer) of the report (default is null)
  * @see AdopterDog
  * @see Dog
  * @see ReportDog

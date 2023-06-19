@@ -184,15 +184,15 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод проверяет текстовую часть отчета на соответствие шаблону, если это фото, выбирает максимальный размер,
-     * если это файл, получает fileId и записывает данные отчета в базу кошек или собак, убирает состояние отправки
-     * отчета - удаляет chatId из HashSet где хранятся пользоватили нажавшие кнопку "Отправить отчет"
-     * Используются методы:<br>
+     * The method checks the text part of the report for compliance with the template, if it is a photo, selects the maximum size,
+     * if it's a file, get the fileId and write the report data to the cat or dog database, remove the send state
+     * report - removes the chatId from the HashSet where the users who clicked the "Send report" button are stored
+     * Methods used:<br>
      * {@link #sendMessageWithInlineKeyboard(long chatId, String textToSend, String... buttons)}<br>
      * {@link #sendMessage(long chatId, String textToSend)}
      *
-     * @param update входящий апдейт бота с фото или файлом (файлом на случай отправки пользователем фото без сжатия)
-     * @param isDog  состояние выбранного приюта у Adopter
+     * @param update incoming update of the bot with a photo or a file (a file in case the user sends an uncompressed photo)
+     * @param isDog  the status of the selected shelter at Adopter
      */
     public void getReport(Update update, boolean isDog) {
         if (validationPatternReport(update.getMessage().getCaption())) {
@@ -235,11 +235,11 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод отправляет пользователю фото с подписью и клавиатурой
+     * The method sends the user a photo with a caption and a keyboard
      *
-     * @param chatId   идентификатор пользователя
-     * @param fileUrl  URL фото, фото должно храниться на сервере
-     * @param keyboard клавиатура
+     * @param chatId   user ID
+     * @param fileUrl  URL of the photo, the photo must be stored on the server
+     * @param keyboard keyboard
      */
     public void sendPhotoWithCaption(long chatId, String caption, String fileUrl, ReplyKeyboard keyboard) {
         SendPhoto sendPhoto = new SendPhoto();
@@ -256,15 +256,15 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод отправляет пользователю фото с подписью с InlineKeyboard<br>
-     * Используется методы
+     * The method sends the user a photo with a caption with InlineKeyboard<br>
+     * Used methods
      * {@link #sendPhotoWithCaption(long, String, String, ReplyKeyboard)}
      * {@link #InlineKeyboardMaker(String...)}
      *
-     * @param chatId     идентификатор пользователя
-     * @param textToSend текст сообщения
-     * @param fileUrl    URL фото, фото должно храниться на сервере
-     * @param buttons    множество (массив или varargs) кнопок клавиатуры
+     * @param chatId     user ID
+     * @param textToSend Message text
+     * @param fileUrl    URL of the photo, the photo must be stored on the server
+     * @param buttons    set (array or varargs) of keyboard buttons
      */
     public void sendPhotoWithCaptionWithInlineKeyboard(long chatId, String textToSend, String fileUrl, String... buttons) {
         InlineKeyboardMarkup inlineKeyboard = InlineKeyboardMaker(buttons);
@@ -272,10 +272,10 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод отправляет пользователю документ
+     * The method sends a document to the user
      *
-     * @param chatId  идентификатор пользователя
-     * @param fileUrl URL документа, документ должен храниться на сервере
+     * @param chatId  user ID
+     * @param fileUrl Document URL, the document must be stored on the server
      */
     public void sendDocument(long chatId, String fileUrl) {
         SendDocument sendDocument = new SendDocument();
@@ -290,10 +290,10 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод отправляет пользователю сообщение
+     * The method sends a message to the user
      *
-     * @param chatId     идентификатор пользователя
-     * @param textToSend текст сообщения
+     * @param chatId     user ID
+     * @param textToSend message text
      * @throws TelegramApiException
      */
     public void sendMessage(long chatId, String textToSend) {
@@ -309,11 +309,11 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод отправляет сообщение c клавиатурой
+     * The method sends a message with the keyboard
      *
-     * @param chatId     идентификатор пользователя
-     * @param textToSend текст сообщения
-     * @param keyboard   клавиатура
+     * @param chatId     user ID
+     * @param textToSend message text
+     * @param keyboard   keyboard
      * @throws TelegramApiException
      */
     public void sendMessage(long chatId, String textToSend, ReplyKeyboard keyboard) {
@@ -330,14 +330,14 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод отправляет сообщение с InlineKeyboard<br>
-     * Используется методы
+     * The method sends a message with InlineKeyboard<br>
+     * Used methods
      * {@link #sendMessage(long, String, ReplyKeyboard)}
      * {@link #InlineKeyboardMaker(String...)}
      *
-     * @param chatId     идентификатор пользователя
-     * @param textToSend текст сообщения
-     * @param buttons    множество (массив или varargs) кнопок клавиатуры
+     * @param chatId     user ID
+     * @param textToSend message text
+     * @param buttons    set (array or varargs) of keyboard buttons
      */
     public void sendMessageWithInlineKeyboard(long chatId, String textToSend, String... buttons) {
         InlineKeyboardMarkup inlineKeyboard = InlineKeyboardMaker(buttons);
@@ -345,10 +345,10 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод создает InlineKeyboard
+     * The method creates an InlineKeyboard
      *
-     * @param buttons множество (массив или varargs) кнопок клавиатуры
-     * @return клавиатура привязанная к сообщению
+     * @param buttons set (array or varargs) of keyboard buttons
+     * @return message keyboard
      */
     public InlineKeyboardMarkup InlineKeyboardMaker(String... buttons) {
         InlineKeyboardMarkup inlineKeyboardAbout = new InlineKeyboardMarkup();
@@ -369,10 +369,10 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод создает клавиатуру внизу экрана
-     * Эта клавиатура всегда доступна пользователю
+     * The method creates a keyboard at the bottom of the screen
+     * This keyboard is always available to the user
      *
-     * @return клавиатура с вариантами команд
+     * @return keyboard with command options
      */
     public ReplyKeyboardMarkup replyKeyboardBottom() {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
@@ -409,9 +409,9 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод создает клавиатуру для выбора приюта внизу экрана
+     * The method creates a keyboard for choosing a shelter at the bottom of the screen
      *
-     * @return клавиатура с вариантами команд
+     * @return keyboard with command options
      */
     public ReplyKeyboardMarkup replyKeyboardShelter() {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
@@ -428,9 +428,9 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод находит и удаляет последний запрос волонтеру от пользователя по chatId пользователя
+     * The method finds and deletes the last volunteer request from the user by the user's chatId
      *
-     * @param chatId идентификатор чата пользователя, который позвал волонтера и написал сообщение волонтеру
+     * @param chatId chat ID of the user who called the volunteer and wrote a message to the volunteer
      */
     public void findAndRemoveRequestFromUser(long chatId) {
         for (Map.Entry<String, Long> stringLongEntry : REQUEST_FROM_USER.entrySet()) {
@@ -442,10 +442,10 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод пересылает волонтеру сообщение с messageId от пользователя с chatId пользователя, позвавшего волонтера
+     * The method sends a message to the volunteer with the messageId from the user with the chatId of the user who called the volunteer
      *
-     * @param chatId    идентификатор чата пользователя, который позвал волонтера и написал сообщение волонтеру
-     * @param messageId идентификатор пересылаемого волонтеру сообщения
+     * @param chatId    chat ID of the user who called the volunteer and wrote a message to the volunteer
+     * @param messageId identifier of the message sent to the volunteer
      */
     public void forwardMessageToVolunteer(long chatId, int messageId) {
         ForwardMessage forwardMessage = new ForwardMessage(String.valueOf(config.getVolunteerChatId()), String.valueOf(chatId), messageId);
@@ -457,16 +457,16 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод описывает состояние разговора с волонтером или отправка дефолтной команды, а именно:<br>
-     * - либо пересылает сообщение волонтера от пользователя,<br>
-     * - либо отправляет сообщение пользователю от волонтера,<br>
-     * - либо если пользователь не находится в состоянии разговора с волонтером, сообщает что такой команды нет<br>
-     * Используются методы:<br>
+     * The method describes the state of a conversation with a volunteer or sending a default command, namely:<br>
+     * - either forwards the volunteer's message from the user,<br>
+     * - either sends a message to the user from a volunteer,<br>
+     * - or if the user is not in a conversation with a volunteer, reports that there is no such command<br>
+     * Methods used:<br>
      * {@link #findAndRemoveRequestFromUser(long chatId)}<br>
      * {@link #forwardMessageToVolunteer(long chatId, int messageId)}<br>
      * {@link #sendMessage(long chatId, String textToSend)}
      *
-     * @param update принятое текстовое сообщение пользователя<br>
+     * @param update received user text message<br>
      */
     public void talkWithVolunteerOrNoSuchCommand(Update update) {
         long chatId = update.getMessage().getChatId();
@@ -496,11 +496,11 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод изменяет состояние поля isDog - состояние выбранного приюта у Adopter
-     * Используются методы:<br>
+     * The method changes the state of the isDog field - the state of the selected shelter in Adopter
+     * Methods used:<br>
      *
-     * @param chatId идентификатор чата пользователя, который выбрал/сменил приют
-     * @param isDog  состояние выбранного приюта у Adopter
+     * @param chatId chat ID of the user who chose/changed shelter
+     * @param isDog  the status of the selected shelter at Adopter
      */
     public void changeUserStatusOfShelter(Long chatId, boolean isDog) {
         AdopterDog adopterDog = adopterDogRepository.findAdopterDogByChatId(chatId);
@@ -531,9 +531,9 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Создает клавиатуру и отсылает сообщение с ней для получения контактных данных пользователя
+     * Creates a keyboard and sends a message with it to get the user's contact information
      *
-     * @param chatId идентификатор чата пользователя
+     * @param chatId user chat id
      */
     public void sendMessageWithContactKeyboard(long chatId) {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
@@ -559,9 +559,9 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Обрабатывает присланные пользователем контактные данные и записывает их базу данных
+     * Processes the contact data sent by the user and writes their database
      *
-     * @param update принятый контакт пользователя
+     * @param update accepted user contact
      */
     private void processContact(Update update) {
         User user = update.getMessage().getFrom();
@@ -590,19 +590,19 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод организует по расписанию автоматическую проверку наличия отчетов по сроку регистрации
-     * по следующему алгоритму:<br>
-     * - получение списка Adopter со статусом PROBATION, ADDITIONAL_PERIOD_14, ADDITIONAL_PERIOD_30;<br>
-     * - получение для каждого Adopter из списка его отчетов последний отчет со статусом ACCEPTED или UNCHECKED;<br>
-     * - при отсуствии отчета генерируется отчет (без регистрации в БД) для фиксации StatusDate;<br>
-     * - отправка сообщения-уведомления волонтеру по итогу проверки на разницу 2 дня года между
-     * текущей датой и дня года даты регистрации отчета со статусом ACCEPTED.<br>
-     * - отправка сообщения-напоминания волонтеру по итогу проверки на разницу 1 день года между
-     * текущей датой и дня года даты регистрации отчета со статусом UNCHEKED.<br>
-     * - отправка сообщения-напоминания Adopter`у по итогу проверки на разницу 1 день года между
-     * текущей датой и дня года даты регистрации отчета со статусом ACCEPTED.<br>
-     * Аннотация @Scheduled с параметром (cron = "* * * * * *") актвирует метод по расписанию в момент,
-     * указанный в параметре cron = "Секунда Минута Час День Месяц Год"
+     * The method organizes according to the schedule an automatic check for the availability of reports by the registration period
+     * according to the following algorithm:<br>
+     * - getting Adopter list with status PROBATION, ADDITIONAL_PERIOD_14, ADDITIONAL_PERIOD_30;<br>
+     * - getting for each Adopter from the list of its reports the last report with status ACCEPTED or UNCHECKED;<br>
+     * - if there is no report, a report is generated (without registration in the database) to fix the StatusDate;<br>
+     * - sending a notification message to a volunteer based on the results of checking for the difference of 2 days of the year between
+     * the current date and day of the year of the report registration date with the status ACCEPTED.<br>
+     * - sending a reminder message to the volunteer based on the results of checking for the difference 1 day of the year between
+     * the current date and day of the year of the date of registration of the report with the UNCHEKED status.<br>
+     * - sending a reminder message to Adopter as a result of checking for the difference 1 day of the year between
+     * the current date and day of the year of the report registration date with the status ACCEPTED.<br>
+     * The @Scheduled annotation with the parameter (cron = "* * * * * *") activates the method according to the schedule at the moment when
+     * specified in the cron parameter = "Second Minute Hour Day Month Year"
      *
      * @see Scheduled
      * @see ExaminationStatus
@@ -647,19 +647,19 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод организует по расписанию автоматическую проверку наличия отчетов по сроку регистрации
-     * по следующему алгоритму:<br>
-     * - получение списка Adopter со статусом PROBATION, ADDITIONAL_PERIOD_14, ADDITIONAL_PERIOD_30;<br>
-     * - получение для каждого Adopter из списка его отчетов последний отчет со статусом ACCEPTED или UNCHECKED;<br>
-     * - при отсутствии отчета генерируется отчет (без регистрации в БД) для фиксации StatusDate;<br>
-     * - отправка сообщения-уведомления волонтеру по итогу проверки на разницу 2 дня года между
-     * текущей датой и дня года даты регистрации отчета со статусом ACCEPTED.<br>
-     * - отправка сообщения-напоминания волонтеру по итогу проверки на разницу 1 день года между
-     * текущей датой и дня года даты регистрации отчета со статусом UNCHEKED.<br>
-     * - отправка сообщения-напоминания Adopter`у по итогу проверки на разницу 1 день года между
-     * текущей датой и дня года даты регистрации отчета со статусом ACCEPTED.<br>
-     * Аннотация @Scheduled с параметром (cron = "* * * * * *") актвирует метод по расписанию в момент,
-     * указанный в параметре cron = "Секунда Минута Час День Месяц Год"
+     * The method organizes according to the schedule an automatic check for the availability of reports by the registration period
+     * according to the following algorithm:<br>
+     * - getting Adopter list with status PROBATION, ADDITIONAL_PERIOD_14, ADDITIONAL_PERIOD_30;<br>
+     * - getting for each Adopter from the list of its reports the last report with status ACCEPTED or UNCHECKED;<br>
+     * - if there is no report, a report is generated (without registration in the database) to fix the StatusDate;<br>
+     * - sending a notification message to a volunteer based on the results of checking for the difference of 2 days of the year between
+     * the current date and day of the year of the report registration date with the status ACCEPTED.<br>
+     * - sending a reminder message to the volunteer based on the results of checking for the difference 1 day of the year between
+     * the current date and day of the year of the date of registration of the report with the UNCHEKED status.<br>
+     * - sending a reminder message to Adopter as a result of checking for the difference 1 day of the year between
+     * the current date and day of the year of the report registration date with the status ACCEPTED.<br>
+     * The @Scheduled annotation with the parameter (cron = "* * * * * *") activates the method according to the schedule at the moment when
+     * specified in the cron parameter = "Second Minute Hour Day Month Year"
      *
      * @see Scheduled
      * @see ExaminationStatus
@@ -703,12 +703,12 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод организует по расписанию автоматическую проверку наличия отчетов со сроком регистрации превышающим:<br>
-     * 30 дней для усыновителей со статусами PROBATION или ADDITIONAL_PERIOD_30;<br>
-     * 14 дней для усыновителей со статусом ADDITIONAL_PERIOD_30.<br>
-     * Согласно выбранному списку усыновителей бот осуществляет отправку волонтеру сообщения с текстом<br>
-     * "{@value BotCommands#TAKE_DECISION} userName" и с кнопками  для выбора действия для каждого усыновителя<br>
-     * Аннотация @Scheduled с параметром (cron = "* * * * * *") актвирует метод по расписанию cron = "Секунда Минута Час День Месяц Год"
+     * The method schedules an automatic check for reports with a registration period exceeding:<br>
+     * 30 days for adoptive parents with PROBATION or ADDITIONAL_PERIOD_30;<br>
+     * 14 days for adoptive parents with the status ADDITIONAL_PERIOD_30.<br>
+     * According to the selected list of adopters, the bot sends a message to the volunteer with the text<br>
+     * "{@value BotCommands#TAKE_DECISION} userName" and with buttons to select an action for each adopter<br>
+     * The @Scheduled annotation with the parameter (cron = "* * * * * *") activates the scheduled method cron = "Second Minute Hour Day Month Year"
      *
      * @see Status
      * @see Scheduled
@@ -735,10 +735,10 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод организует по расписанию автоматическую проверку наличия отчетов со сроком регистрации превышающим:<br>
-     * 30 дней для усыновителей со статусами PROBATION или ADDITIONAL_PERIOD_30;<br>
-     * 14 дней для усыновителей со статусом ADDITIONAL_PERIOD_30  :<br>
-     * Аннотация @Scheduled с параметром (cron = "* * * * * *") актвирует метод по расписанию cron = "Секунда Минута Час День Месяц Год"
+     * The method schedules an automatic check for reports with a registration period exceeding:<br>
+     * 30 days for adoptive parents with PROBATION or ADDITIONAL_PERIOD_30;<br>
+     * 14 days for adoptive parents with status ADDITIONAL_PERIOD_30 :<br>
+     * The @Scheduled annotation with the parameter (cron = "* * * * * *") activates the scheduled method cron = "Second Minute Hour Day Month Year"
      *
      * @see Status
      * @see Scheduled
@@ -746,7 +746,6 @@ public class Bot extends TelegramLongPollingBot {
 
     //для проверки рабоспособности cron = "30 * * * * *"
     @Scheduled(cron = "30 * * * * *")
-
     void sendFinishListForCatVolunteer() {
         List<AdopterCat> adoptersWithFinishProbationPeriod = adopterCatRepository.findAll().stream()
                 .filter(x -> (x.getState() == PROBATION || x.getState() == ADDITIONAL_PERIOD_30)
@@ -765,19 +764,19 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод разбивает текст сообщения, направленного волонтеру на 2 составляющих, получает userName, находит chatId для
-     * данного пользователя и обновляет у него статус и дату статуса на дату обращения к методу <br>
+     * The method splits the text of the message sent to the volunteer into 2 components, gets the userName, finds the chatId for
+     * of this user and updates his status and status date on the date of the call to the method <br>
      *
-     * @param botReplies  сообщение уведомление для пользователя об изменении статуса
-     * @param messageText текст сообщения из которого волонтер нажал кнопку в формате<br>
-     *                    "{@value BotCommands#TAKE_DECISION} userName" для получения userName
-     * @param status      значение статуса на который будет замена
+     * @param botReplies  notification message to user about status change
+     * @param messageText the text of the message from which the volunteer pressed the button in the format<br>
+     *                    "{@value BotCommands#TAKE_DECISION} userName" to get userName
+     * @param status      the value of the status to which the replacement will be
      * @see AdopterDog#setState(Status)
      * @see AdopterDog#setStatusDate(LocalDate)
      */
     public void changeDogAdopterStatus(String botReplies, String messageText, Status status) {
 
-       Long chatId = Long.valueOf(messageText.split("chatId: ")[1]);
+        Long chatId = Long.valueOf(messageText.split("chatId: ")[1]);
         AdopterDog adopterDog = adopterDogService.get(chatId);
         adopterDog.setState(status);
         //для проверки рабоспособности изменения даты использовать параметр LocalDate.now().minusDays(5)
@@ -790,13 +789,13 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод разбивает текст сообщения, направленного волонтеру на 2 составляющих, получает userName, находит chatId для
-     * данного пользователя и обновляет у него статус и дату статуса на дату обращения к методу <br>
+     * The method splits the text of the message sent to the volunteer into 2 components, gets the userName, finds the chatId for
+     * of this user and updates his status and status date on the date of the call to the method <br>
      *
-     * @param botReplies  сообщение уведомление для пользователя об изменении статуса
-     * @param messageText текст сообщения из которого волонтер нажал кнопку в формате<br>
-     *                    "{@value BotCommands#TAKE_DECISION} userName" для получения userName
-     * @param status      значение статуса на который будет замена
+     * @param botReplies  notification message to user about status change
+     * @param messageText the text of the message from which the volunteer pressed the button in the format<br>
+     *                    "{@value BotCommands#TAKE_DECISION} userName" to get userName
+     * @param status      the value of the status to which the replacement will be
      * @see AdopterCat#setState(Status)
      * @see AdopterCat#setStatusDate(LocalDate)
      */
@@ -813,9 +812,10 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     /**
-     * Метод для отправки сообщения пользователю бота с использованием Telegram API
-     * @param chatId идентификатор пользователя
-     * @param textToSend отправляемый текст
+     * Method for sending message to bot user using Telegram API
+     *
+     * @param chatId     user ID
+     * @param textToSend sent text
      * @throws IOException
      */
     public static void sendToTelegram(Long chatId, String textToSend) {

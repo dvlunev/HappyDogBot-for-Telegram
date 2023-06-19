@@ -21,8 +21,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Тест - класс для проверки API endpoints при обращении к маршрутам отдельными HTTP методами
- * для класса - сервиса собак
+ * Test class for checking API endpoints when accessing routes with separate HTTP methods
+ * for the class - dog service
+ *
  * @see Dog
  * @see DogService
  * @see DogController
@@ -73,14 +74,15 @@ public class DogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в DogController
+     * Method Testing <b>add()</b> в DogController
      * <br>
-     * Mockito: когда вызывается метод <b>DogService::add</b>,
-     * возвращается статус 200 и собака <b>expected</b>
+     * Mockito: when the method is called <b>DogService::add</b>,
+     * returns status 200 and dog <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения собаки при попытке ее создания и сохранения в базе данных")
+    @DisplayName("Checking for getting status 200 and returning a dog when trying to create it and save it to the database")
     void addDogTest200() throws Exception {
         when(dogService.add(expected)).thenReturn(expected);
 
@@ -93,14 +95,15 @@ public class DogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в DogController
+     * Method Testing <b>get()</b> в DogController
      * <br>
-     * Mockito: когда вызывается метод <b>DogService::get</b>,
-     * возвращается статус 200 и собака <b>expected</b>
+     * Mockito: when the method is called <b>DogService::get</b>,
+     * returns status 200 and dog <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения собаки при попытке ее поиска по id")
+    @DisplayName("Checking for status 200 and returning a dog when trying to search for it by id")
     public void getDogTest200() throws Exception {
         Long dogId = expected.getId();
 
@@ -113,16 +116,17 @@ public class DogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в DogController
+     * Method Testing <b>get()</b> в DogController
      * <br>
-     * Mockito: когда вызывается метод <b>DogService::get</b>,
-     * выбрасывается исключение <b>DogNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionDog</b>
+     * Mockito: when the method is called <b>DogService::get</b>,
+     * an exception is thrown <b>DogNotFoundException</b> и
+     * returns status 404 <b>exceptionDog</b>
+     *
      * @throws Exception
      * @throws DogNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке поиска по id собаки, которой нет в базе данных")
+    @DisplayName("Checking for status 404 when trying to search by id of a dog that is not in the database")
     void getDogTest404() throws Exception {
         when(dogService.get(anyLong())).thenThrow(DogNotFoundException.class);
 
@@ -132,14 +136,15 @@ public class DogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в DogController
+     * Method Testing <b>delete()</b> в DogController
      * <br>
-     * Mockito: когда вызывается метод <b>DogService::remove</b>,
-     * возвращается статус 200 <b>expected</b>
+     * Mockito: when the method is called <b>DogService::remove</b>,
+     * returns status 200 <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке удалить собаку из базы данных по id")
+    @DisplayName("Checking for status 200 when trying to remove a dog from the database by id")
     public void deleteDogTest200() throws Exception {
         Long dogId = expected.getId();
 
@@ -151,16 +156,17 @@ public class DogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в DogController
+     * Method Testing <b>delete()</b> в DogController
      * <br>
-     * Mockito: когда вызывается метод <b>DogService::remove</b>,
-     * выбрасывается исключение <b>DogNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionDog</b>
+     * Mockito: when the method is called <b>DogService::remove</b>,
+     * an exception is thrown <b>DogNotFoundException</b> и
+     * returns status 404 <b>exceptionDog</b>
+     *
      * @throws Exception
      * @throws DogNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке удалить по id собаку, которой нет в базе данных ")
+    @DisplayName("Checking for status 404 when trying to delete by id a dog that is not in the database")
     public void deleteDogTest404() throws Exception {
         Long dogId = exceptionDog.getId();
 
@@ -172,14 +178,15 @@ public class DogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в DogController
+     * Method Testing <b>update()</b> в DogController
      * <br>
-     * Mockito: когда вызывается метод <b>DogService::update</b>,
-     * возвращается статус 200 и отредактированная собака <b>expected</b>
+     * Mockito: when the method is called <b>DogService::update</b>,
+     * returns status 200 and edited dog <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке обновить и сохранить собаку в базе данных")
+    @DisplayName("Checking for status 200 when trying to update and save a dog in the database")
     public void updateDogTest200() throws Exception {
         when(dogService.update(expected)).thenReturn(expected);
 
@@ -196,16 +203,17 @@ public class DogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в DogController
+     * Method Testing <b>update()</b> в DogController
      * <br>
-     * Mockito: когда вызывается метод <b>DogService::update</b>,
-     * выбрасывается исключение <b>DogNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionDog</b>
+     * Mockito: when the method is called <b>DogService::update</b>,
+     * an exception is thrown <b>DogNotFoundException</b> и
+     * returns status 404 <b>exceptionDog</b>
+     *
      * @throws Exception
      * @throws DogNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке обновить и сохранить собаку, которой нет в базе данных")
+    @DisplayName("Checking for a 404 status when trying to update and save a dog that is not in the database")
     public void updateDogTest404() throws Exception {
         when(dogService.update(exceptionDog)).thenThrow(DogNotFoundException.class);
 
@@ -217,13 +225,13 @@ public class DogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в DogController
+     * Method Testing <b>getAll()</b> в DogController
      * <br>
-     * Mockito: когда вызывается метод <b>DogService::getAll</b>,
-     * возвращается статус 200 и коллекция собак <b>Arrays.asList(expected, expected1)</b>
+     * Mockito: when the method is called <b>DogService::getAll</b>,
+     * returns status 200 and dogs collection <b>Arrays.asList(expected, expected1)</b>
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения всех собак при попытке их поиска в базе данных")
+    @DisplayName("Checking for getting status 200 and returning all dogs when trying to search for them in the database")
     void getAllDogsTest200() throws Exception {
         when(dogService.getAll()).thenReturn(Arrays.asList(expected, expected1));
 

@@ -24,7 +24,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 /**
- * Тест - класс для проверки CRUD операций в классе - сервисе усыновителя кота
+ * Test class to test CRUD operations in the dog's adopter service class
+ *
  * @see AdopterDog
  * @see AdopterDogRepository
  * @see AdopterDogService
@@ -55,7 +56,7 @@ public class AdopterDogServiceTest {
         expected.setAddress("МСК...");
         expected.setTelephoneNumber("7951...");
         expected.setState(Status.REGISTRATION);
-        expected.setDog(new Dog(1L,"Шарик", "Лабрадор", 2021, "Черно-белый"));
+        expected.setDog(new Dog(1L, "Шарик", "Лабрадор", 2021, "Черно-белый"));
 
         expected1.setChatId(9876543210L);
         expected1.setFirstName("Petr");
@@ -68,13 +69,13 @@ public class AdopterDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в AdopterDogService
+     * Method Testing <b>add()</b> в AdopterDogService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::save</b>,
-     * возвращается усыновитель собака <b>expected</b>
+     * Mockito: when the method is called <b>AdopterDogRepository::save</b>,
+     * dog adopter returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка добавления нового усыновителя собаки и сохранения его в базе данных")
+    @DisplayName("Checking the addition of a new adopter og and saving it in the database")
     public void addAdopterDogTest() {
         when(adopterDogRepository.save(any(AdopterDog.class))).thenReturn(expected);
 
@@ -90,13 +91,13 @@ public class AdopterDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в AdopterDogService
+     * Method Testing <b>get()</b> в AdopterDogService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findById</b>,
-     * возвращается усыновитель собака <b>expected</b>
+     * Mockito: when the method is called <b>AdopterDogRepository::findById</b>,
+     * dog adopter returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка поиска усыновителя собаки по id и возвращения его из базы данных")
+    @DisplayName("Checking the search for the dog's adopter by id and returning it from the database")
     public void getByIdAdopterDogTest() {
         when(adopterDogRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
 
@@ -112,14 +113,15 @@ public class AdopterDogServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>get()</b> в AdopterDogService
+     * Test for throwing an exception in a method <b>get()</b> в AdopterDogService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findById</b>,
-     * выбрасывается исключение <b>AdopterDogNotFoundException</b>
+     * Mockito: when the method is called <b>AdopterDogRepository::findById</b>,
+     * an exception is thrown <b>AdopterDogNotFoundException</b>
+     *
      * @throws AdopterDogNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе поиска усыновителя собаки")
+    @DisplayName("Checking for an Exception Throw in the Dog Adopter Finder Method")
     public void getByIdAdopterDogExceptionTest() {
         when(adopterDogRepository.findById(any(Long.class))).thenThrow(AdopterDogNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(AdopterDogNotFoundException.class,
@@ -127,13 +129,13 @@ public class AdopterDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterDogService
+     * Method Testing <b>update()</b> в AdopterDogService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findById</b> и <b>AdopterDogRepository::save</b>,
-     * возвращается отредактированный усыновитель собаки <b>expected</b>
+     * Mockito: when the method is called <b>AdopterDogRepository::findById</b> и <b>AdopterDogRepository::save</b>,
+     * edited dog adopter returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка редактирования усыновителя собаки, сохранения и возвращения его из базы данных")
+    @DisplayName("Checking the editing of the dog's adopter, saving and returning it from the database")
     public void updateAdopterDogTest() {
         when(adopterDogRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
         when(adopterDogRepository.save(any(AdopterDog.class))).thenReturn(expected);
@@ -151,14 +153,15 @@ public class AdopterDogServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>update()</b> в AdopterDogService
+     * Test for throwing an exception in a method <b>update()</b> в AdopterDogService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findById</b>,
-     * выбрасывается исключение <b>AdopterDogNotFoundException</b>
+     * Mockito: when the method is called <b>AdopterDogRepository::findById</b>,
+     * an exception is thrown <b>AdopterDogNotFoundException</b>
+     *
      * @throws AdopterDogNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе редактирования усыновителя собаки")
+    @DisplayName("Checking for an exception being thrown in the dog's adopter edit method")
     public void updateAdopterDogExceptionTest() {
         when(adopterDogRepository.findById(any(Long.class))).thenThrow(AdopterDogNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(AdopterDogNotFoundException.class,
@@ -166,13 +169,13 @@ public class AdopterDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в AdopterDogService
+     * Method Testing <b>getAll()</b> в AdopterDogService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findAll</b>,
-     * возвращается коллекция усыновителей собак <b>adopterDogs</b>
+     * Mockito: when the method is called <b>AdopterDogRepository::findAll</b>,
+     * dog adopters collection returns <b>adopterDogs</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех усыновителей собак и возвращения их из базы данных")
+    @DisplayName("Verification of finding all adopters of dogs and returning them from the database")
     public void getAllAdopterDogsTest() {
         List<AdopterDog> adopterDogs = new ArrayList<>();
         adopterDogs.add(expected);
@@ -187,13 +190,13 @@ public class AdopterDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в AdopterDogService
+     * Method Testing <b>getAll()</b> в AdopterDogService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findAll</b>,
-     * возвращается пустая коллекция усыновителей собак <b>adopterDogs</b>
+     * Mockito: when the method is called <b>AdopterDogRepository::findAll</b>,
+     * empty dog adopter collection returns <b>adopterDogs</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех усыновителей собак и возвращения из базы данных пустого списка")
+    @DisplayName("Checking to find all dog adopters and return an empty list from the database")
     public void getAllAdopterDogsTestReturnsEmpty() {
         List<AdopterDog> adopterDogs = new ArrayList<>();
         when(adopterDogRepository.findAll()).thenReturn(adopterDogs);
@@ -201,13 +204,13 @@ public class AdopterDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterDogService
+     * Method Testing <b>update()</b> в AdopterDogService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findById</b> и <b>AdopterDogRepository::save</b>,
-     * возвращается отредактированный усыновитель с собакой <b>expected</b>
+     * Mockito: when the method is called <b>AdopterDogRepository::findById</b> и <b>AdopterDogRepository::save</b>,
+     * edited adopter returns with dog <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка добавления собаки в качестве поля объекта усыновитель")
+    @DisplayName("Checking if a dog is added as a field of the adopter object")
     public void updateFieldDogIdByAdopterCat() {
         when(adopterDogRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
         when(adopterDogRepository.save(any(AdopterDog.class))).thenReturn(expected);
@@ -219,13 +222,13 @@ public class AdopterDogServiceTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterDogService
+     * Method Testing <b>update()</b> в AdopterDogService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findById</b> и <b>AdopterDogRepository::save</b>,
-     * возвращается отредактированный усыновитель с коллекцией отчетов о собаках <b>reportDogs</b>
+     * Mockito: when the method is called <b>AdopterDogRepository::findById</b> и <b>AdopterDogRepository::save</b>,
+     * edited adopter returns with collection of dog reports <b>reportDogs</b>
      */
     @Test
-    @DisplayName("Проверка добавления списка отчетов в качестве поля объекта усыновитель")
+    @DisplayName("Validate adding a list of reports as a field of the adopter object")
     public void updateFieldReportAdopterDog() {
         ReportDog expectedTest1 = new ReportDog();
         expectedTest1.setId(1L);

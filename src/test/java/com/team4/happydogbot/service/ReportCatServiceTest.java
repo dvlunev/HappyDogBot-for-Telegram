@@ -24,7 +24,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 /**
- * Тест - класс для проверки CRUD операций в классе - сервисе отчета о коте
+ * Test class to test CRUD operations in cat report service class
+ *
  * @see ReportCat
  * @see ReportCatRepository
  * @see ReportCatService
@@ -35,7 +36,6 @@ public class ReportCatServiceTest {
 
     @Mock
     ReportCatRepository reportCatRepository;
-
     @InjectMocks
     ReportCatService reportCatService;
 
@@ -58,13 +58,13 @@ public class ReportCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в ReportCatService
+     * Method Testing <b>add()</b> in ReportCatService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatRepository::save</b>,
-     * возвращается отчет о коте <b>expected</b>
+     * Mockito: when the method is called <b>ReportCatRepository::save</b>,
+     * cat report returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка добавления нового отчета о коте и сохранения его в базе данных")
+    @DisplayName("Checking to add a new cat report and save it to the database")
     public void addReportCatTest() {
         when(reportCatRepository.save(any(ReportCat.class))).thenReturn(expected);
 
@@ -77,13 +77,13 @@ public class ReportCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в ReportCatService
+     * Method Testing <b>get()</b> in ReportCatService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatRepository::findById</b>,
-     * возвращается отчет о коте <b>expected</b>
+     * Mockito: when the method is called <b>ReportCatRepository::findById</b>,
+     * cat report returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка поиска отчета о коте по id и возвращения его из базы данных")
+    @DisplayName("Checking if a cat report is searched for by id and returned from the database")
     public void getByIdReportCatTest() {
         when(reportCatRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
 
@@ -96,14 +96,15 @@ public class ReportCatServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>get()</b> в ReportCatService
+     * Test for throwing an exception in a method <b>get()</b> in ReportCatService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatRepository::findById</b>,
-     * выбрасывается исключение <b>ReportCatNotFoundException</b>
+     * Mockito: when the method is called <b>ReportCatRepository::findById</b>,
+     * an exception is thrown <b>ReportCatNotFoundException</b>
+     *
      * @throws ReportCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе поиска отчета о коте")
+    @DisplayName("Checking for exception throw in cat report search method")
     public void getByIdReportCatExceptionTest() {
         when(reportCatRepository.findById(any(Long.class))).thenThrow(ReportCatNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(ReportCatNotFoundException.class,
@@ -111,13 +112,13 @@ public class ReportCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в ReportCatService
+     * Method Testing <b>update()</b> in ReportCatService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatRepository::findById</b> и <b>ReportCatRepository::save</b>,
-     * возвращается отредактированный отчет о коте <b>expected1</b>
+     * Mockito: when the method is called <b>ReportCatRepository::findById</b> и <b>ReportCatRepository::save</b>,
+     * edited cat report returns <b>expected1</b>
      */
     @Test
-    @DisplayName("Проверка редактирования отчета о коте, сохранения и возвращения его из базы данных")
+    @DisplayName("Checking the editing of the cat report, saving and returning it from the database")
     public void updateReportCatTest() {
         when(reportCatRepository.findById(any(Long.class))).thenReturn(Optional.of(expected1));
         when(reportCatRepository.save(any(ReportCat.class))).thenReturn(expected1);
@@ -131,14 +132,15 @@ public class ReportCatServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>update()</b> в ReportCatService
+     * Test for throwing an exception in a method <b>update()</b> in ReportCatService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatRepository::findById</b>,
-     * выбрасывается исключение <b>ReportCatNotFoundException</b>
+     * Mockito: when the method is called <b>ReportCatRepository::findById</b>,
+     * an exception is thrown <b>ReportCatNotFoundException</b>
+     *
      * @throws ReportCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе редактирования отчета о коте")
+    @DisplayName("Checking for an exception throw in the cat report ddit method")
     public void updateReportCatExceptionTest() {
         when(reportCatRepository.findById(any(Long.class))).thenThrow(ReportCatNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(ReportCatNotFoundException.class,
@@ -146,13 +148,13 @@ public class ReportCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в ReportCatService
+     * Method Testing <b>getAll()</b> in ReportCatService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatRepository::findAll</b>,
-     * возвращается коллекция отчетов о котах <b>reportCats</b>
+     * Mockito: when the method is called <b>ReportCatRepository::findAll</b>,
+     * cat report collection returns <b>reportCats</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех отчетов о котах и возвращения их из базы данных")
+    @DisplayName("Checking to find all cat reports and return them from the database")
     public void getAllReportCatsTest() {
         List<ReportCat> reportCats = new ArrayList<>();
         reportCats.add(expected);
@@ -167,13 +169,13 @@ public class ReportCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в ReportCatService
+     * Method Testing <b>getAll()</b> in ReportCatService
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatRepository::findAll</b>,
-     * возвращается пустая коллекция отчетов о котах <b>reportCats</b>
+     * Mockito: when the method is called <b>ReportCatRepository::findAll</b>,
+     * returning an empty cat report collection <b>reportCats</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех отчетов о котах и возвращения из базы данных пустого списка")
+    @DisplayName("Checking to find all cat reports and return an empty list from the database")
     public void getAllReportCatsTestReturnsEmpty() {
         List<ReportCat> reportCats = new ArrayList<>();
         when(reportCatRepository.findAll()).thenReturn(reportCats);

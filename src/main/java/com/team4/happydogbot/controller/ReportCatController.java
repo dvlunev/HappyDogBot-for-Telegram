@@ -15,18 +15,20 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Collection;
 
 /**
- * Класс - контроллер для объекта Cat, содержащий набор API endpoints
- * для обращения к маршрутам отдельными HTTP методами
+ * Controller class for a Cat object containing a set of API endpoints
+ * for accessing routes with separate HTTP methods
+ *
  * @see ReportCat
  * @see ReportCatService
  * @see ReportCatController
  */
 @RestController
 @RequestMapping("/report_cat")
-@Tag(name = "Отчеты", description = "CRUD-операции и другие эндпоинты для работы с отчетами")
+@Tag(name = "Reports", description = "CRUD operations and other endpoints for working with reports")
 public class ReportCatController {
 
     private final ReportCatService reportCatService;
@@ -36,13 +38,13 @@ public class ReportCatController {
     }
 
     @Operation(
-            summary = "Добавление отчета",
-            description = "Добавление нового отчета из тела запроса с присвоением id из генератора"
+            summary = "Adding a report",
+            description = "Adding a new report from the request body with an id assigned from the generator"
     )
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Отчет был добавлен",
+                    description = "The report has been added",
                     content = {
                             @Content(
                                     mediaType = "application/json",
@@ -52,7 +54,7 @@ public class ReportCatController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Некорректные параметры отчета",
+                    description = "Incorrect report parameters",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -68,11 +70,11 @@ public class ReportCatController {
         return ResponseEntity.ok(reportCat);
     }
 
-    @Operation(summary = "Получение отчета по id",
+    @Operation(summary = "Getting a report by id",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Отчет, найденный по id",
+                            description = "Report found by id",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = ReportCat.class)
@@ -87,7 +89,7 @@ public class ReportCatController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Отчет был найден",
+                    description = "The report was found",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -97,7 +99,7 @@ public class ReportCatController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Отчет не был найден",
+                    description = "The report not found",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -116,11 +118,11 @@ public class ReportCatController {
         return ResponseEntity.ok(reportCat);
     }
 
-    @Operation(summary = "Получение фото отчета по id отчета",
+    @Operation(summary = "Getting a photo report by report id",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Фото по id отчета"
+                            description = "Photo by report id"
                     )
             }
     )
@@ -131,30 +133,30 @@ public class ReportCatController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Фото к отчету было найдено"
+                    description = "The photo for the report was found"
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Фото к отчету не было найдено"
+                    description = "The photo for the report was not found"
             )
     }
     )
     @GetMapping("/photo/{id}")
-    public ResponseEntity<byte[]> getPhoto(@Parameter (description = "report id") @PathVariable Long id) {
+    public ResponseEntity<byte[]> getPhoto(@Parameter(description = "report id") @PathVariable Long id) {
         ReportCat reportCat = this.reportCatService.get(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG);
         headers.setContentLength(reportCat.getFileId().length());
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=\"ReportPhoto.jpg\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"ReportPhoto.jpg\"")
                 .body(reportCatService.getFile(id));
     }
 
-    @Operation(summary = "Удаление отчета по id",
+    @Operation(summary = "Deleting a report by id",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Отчет, найденный по id",
+                            description = "Report found by id",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = ReportCat.class)
@@ -169,11 +171,11 @@ public class ReportCatController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Отчет удален"
+                    description = "Report deleted"
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Отчет не был удален"
+                    description = "The report has not been deleted"
             )
     }
     )
@@ -186,13 +188,13 @@ public class ReportCatController {
     }
 
     @Operation(
-            summary = "Изменение отчета",
-            description = "Обновление отчета из тела запроса"
+            summary = "Editing a report",
+            description = "Update report from request body"
     )
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Данные отчета обновлены",
+                    description = "Report data updated",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -202,7 +204,7 @@ public class ReportCatController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Данные отчета не обновлены",
+                    description = "Report data not updated",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -218,11 +220,11 @@ public class ReportCatController {
         return ResponseEntity.ok(reportCat);
     }
 
-    @Operation(summary = "Просмотр всех отчетов",
+    @Operation(summary = "View all reports",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Отчеты найдены",
+                            description = "Reports found",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = ReportCat.class)

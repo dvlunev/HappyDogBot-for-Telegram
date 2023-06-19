@@ -22,7 +22,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 /**
- * Тест - класс для проверки CRUD операций в классе - сервисе кота
+ * Test class to test CRUD operations in cat service class
+ *
  * @see Cat
  * @see CatRepository
  * @see CatService
@@ -56,12 +57,13 @@ public class CatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в CatService
+     * Method Testing <b>add()</b> in CatService
      * <br>
-     * Mockito: когда вызывается метод <b>CatRepository::save</b>, возвращается кот <b>expected</b>
+     * Mockito: when the method is called <b>CatRepository::save</b>,
+     * the cat returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка добавления новой кота и сохранения его в базе данных")
+    @DisplayName("Checking for adding a new cat and saving it to the database")
     public void addCatTest() {
         when(catRepository.save(any(Cat.class))).thenReturn(expected);
 
@@ -74,13 +76,13 @@ public class CatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в CatService
+     * Method Testing <b>get()</b> in CatService
      * <br>
-     * Mockito: когда вызывается метод <b>CatRepository::findById</b>,
-     * возвращается кот <b>expected</b>
+     * Mockito: when the method is called <b>CatRepository::findById</b>,
+     * the cat returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка поиска кота по id и возвращения его из базы данных")
+    @DisplayName("Checking the search for a cat by id and returning it from the database")
     public void getByIdCatTest() {
         when(catRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
 
@@ -93,27 +95,28 @@ public class CatServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>get()</b> в CatService
+     * Test for throwing an exception in a method <b>get()</b> in CatService
      * <br>
-     * Mockito: когда вызывается метод <b>CatRepository::findById</b>,
-     * выбрасывается исключение <b>CatNotFoundException</b>
+     * Mockito: when the method is called <b>CatRepository::findById</b>,
+     * an exception is thrown <b>CatNotFoundException</b>
+     *
      * @throws CatNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе поиска кота")
+    @DisplayName("Checking for an exception throw in the cat finder method")
     public void getByIdCatExceptionTest() {
         when(catRepository.findById(any(Long.class))).thenThrow(CatNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(CatNotFoundException.class, () -> catService.get(0L));
     }
 
     /**
-     * Тестирование метода <b>update()</b> в CatService
+     * Method Testing <b>update()</b> in CatService
      * <br>
-     * Mockito: когда вызывается метод <b>CatRepository::findById</b> и <b>CatRepository::save</b>,
-     * возвращается отредактированный кот <b>expected</b>
+     * Mockito: when the method is called <b>CatRepository::findById</b> и <b>CatRepository::save</b>,
+     * the edited cat returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка редактирования кота, сохранения и возвращения его из базы данных")
+    @DisplayName("Checking cat editing, saving and returning it from the database")
     public void updateCatTest() {
         when(catRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
         when(catRepository.save(any(Cat.class))).thenReturn(expected);
@@ -127,14 +130,15 @@ public class CatServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>update()</b> в CatService
+     * Test for throwing an exception in a method <b>update()</b> in CatService
      * <br>
-     * Mockito: когда вызывается метод <b>CatRepository::findById</b>,
-     * выбрасывается исключение <b>CatNotFoundException</b>
+     * Mockito: when the method is called <b>CatRepository::findById</b>,
+     * an exception is thrown <b>CatNotFoundException</b>
+     *
      * @throws CatNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе редактирования кота")
+    @DisplayName("Checking for an exception throw in the cat edit method")
     public void updateCatExceptionTest() {
         when(catRepository.findById(any(Long.class))).thenThrow(CatNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(CatNotFoundException.class,
@@ -142,13 +146,13 @@ public class CatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в CatService
+     * Method Testing <b>getAll()</b> in CatService
      * <br>
-     * Mockito: когда вызывается метод <b>CatRepository::findAll</b>,
-     * возвращается коллекция котов <b>cats</b>
+     * Mockito: when the method is called <b>CatRepository::findAll</b>,
+     * the cat collection returns <b>cats</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех котов и возвращения их из базы данных")
+    @DisplayName("Checking to find all cats and return them from the database")
     public void getAllCatsTest() {
         List<Cat> cats = new ArrayList<>();
         cats.add(expected);
@@ -163,13 +167,13 @@ public class CatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в CatService
+     * Method Testing <b>getAll()</b> in CatService
      * <br>
-     * Mockito: когда вызывается метод <b>CatRepository::findAll</b>,
-     * возвращается пустая коллекция усыновителей котов <b>cats</b>
+     * Mockito: when the method is called <b>CatRepository::findAll</b>,
+     * empty cat adopter collection returns <b>cats</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех котов и возвращения из базы данных пустого списка")
+    @DisplayName("Checking to find all cats and return an empty list from the database")
     public void getAllCatsTestReturnsEmpty() {
         List<Cat> cats = new ArrayList<>();
         when(catRepository.findAll()).thenReturn(cats);

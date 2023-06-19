@@ -24,7 +24,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 /**
- * Тест - класс для проверки CRUD операций в классе - сервисе усыновителя кота
+ * Test class to test CRUD operations in the cat's adopter service class
+ *
  * @see AdopterCat
  * @see AdopterCatRepository
  * @see AdopterCatService
@@ -55,7 +56,7 @@ public class AdopterCatServiceTest {
         expected.setAddress("МСК...");
         expected.setTelephoneNumber("7951...");
         expected.setState(Status.REGISTRATION);
-        expected.setCat(new Cat(1L,"Мурзик", "Сиамская", 2021, "Черно-белый"));
+        expected.setCat(new Cat(1L, "Мурзик", "Сиамская", 2021, "Черно-белый"));
 
         expected1.setChatId(9876543210L);
         expected1.setFirstName("Petr");
@@ -68,13 +69,13 @@ public class AdopterCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в AdopterCatService
+     * Method Testing <b>add()</b> в AdopterCatService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::save</b>,
-     * возвращается усыновитель кота <b>expected</b>
+     * Mockito: when the method is called <b>AdopterCatRepository::save</b>,
+     * cat adopter returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка добавления нового усыновителя кота и сохранения его в базе данных")
+    @DisplayName("Checking the addition of a new adopter cat and saving it in the database")
     public void addAdopterCatTest() {
         when(adopterCatRepository.save(any(AdopterCat.class))).thenReturn(expected);
 
@@ -90,13 +91,13 @@ public class AdopterCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в AdopterCatService
+     * Method Testing <b>get()</b> в AdopterCatService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findById</b>,
-     * возвращается усыновитель кота <b>expected</b>
+     * Mockito: when the method is called <b>AdopterCatRepository::findById</b>,
+     * cat adopter returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка поиска усыновителя кота по id и возвращения его из базы данных")
+    @DisplayName("Checking the search for the cat's adopter by id and returning it from the database")
     public void getByIdAdopterCatTest() {
         when(adopterCatRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
 
@@ -112,14 +113,15 @@ public class AdopterCatServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>get()</b> в AdopterCatService
+     * Test for throwing an exception in a method <b>get()</b> в AdopterCatService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findById</b>,
-     * выбрасывается исключение <b>AdopterCatNotFoundException</b>
+     * Mockito: when the method is called <b>AdopterCatRepository::findById</b>,
+     * an exception is thrown <b>AdopterCatNotFoundException</b>
+     *
      * @throws AdopterCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе поиска усыновителя кота")
+    @DisplayName("Checking for an Exception Throw in the Cat Adopter Finder Method")
     public void getByIdAdopterCatExceptionTest() {
         when(adopterCatRepository.findById(any(Long.class))).thenThrow(AdopterCatNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(AdopterCatNotFoundException.class,
@@ -127,13 +129,13 @@ public class AdopterCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterCatService
+     * Method Testing <b>update()</b> в AdopterCatService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findById</b> и <b>AdopterCatRepository::save</b>,
-     * возвращается отредактированный усыновитель кота <b>expected</b>
+     * Mockito: when the method is called <b>AdopterCatRepository::findById</b> и <b>AdopterCatRepository::save</b>,
+     * edited cat adopter returns <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка редактирования усыновителя кота, сохранения и возвращения его из базы данных")
+    @DisplayName("Checking the editing of the cat's adopter, saving and returning it from the database")
     public void updateAdopterCatTest() {
         when(adopterCatRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
         when(adopterCatRepository.save(any(AdopterCat.class))).thenReturn(expected);
@@ -151,14 +153,15 @@ public class AdopterCatServiceTest {
     }
 
     /**
-     * Тест на создание исключения в методе <b>update()</b> в AdopterCatService
+     * Test for throwing an exception in a method <b>update()</b> в AdopterCatService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findById</b>,
-     * выбрасывается исключение <b>AdopterCatNotFoundException</b>
+     * Mockito: when the method is called <b>AdopterCatRepository::findById</b>,
+     * an exception is thrown <b>AdopterCatNotFoundException</b>
+     *
      * @throws AdopterCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка выброса исключения в методе редактирования усыновителя кота")
+    @DisplayName("Checking for an exception being thrown in the cat's adopter edit method")
     public void updateAdopterCatExceptionTest() {
         when(adopterCatRepository.findById(any(Long.class))).thenThrow(AdopterCatNotFoundException.class);
         org.junit.jupiter.api.Assertions.assertThrows(AdopterCatNotFoundException.class,
@@ -166,13 +169,13 @@ public class AdopterCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в AdopterCatService
+     * Method Testing <b>getAll()</b> в AdopterCatService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findAll</b>,
-     * возвращается коллекция усыновителей котов <b>adopterCats</b>
+     * Mockito: when the method is called <b>AdopterCatRepository::findAll</b>,
+     * cat adopters collection returns <b>adopterCats</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех усыновителей котов и возвращения их из базы данных")
+    @DisplayName("Verification of finding all adopters of cats and returning them from the database")
     public void getAllAdopterCatsTest() {
         List<AdopterCat> adopterCats = new ArrayList<>();
         adopterCats.add(expected);
@@ -187,13 +190,13 @@ public class AdopterCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в AdopterCatService
+     * Method Testing <b>getAll()</b> в AdopterCatService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findAll</b>,
-     * возвращается пустая коллекция усыновителей котов <b>adopterCats</b>
+     * Mockito: when the method is called <b>AdopterCatRepository::findAll</b>,
+     * empty cat adopter collection returns <b>adopterCats</b>
      */
     @Test
-    @DisplayName("Проверка поиска всех усыновителей котов и возвращения из базы данных пустого списка")
+    @DisplayName("Checking to find all cat adopters and return an empty list from the database")
     public void getAllAdopterCatsTestReturnsEmpty() {
         List<AdopterCat> adopterCats = new ArrayList<>();
         when(adopterCatRepository.findAll()).thenReturn(adopterCats);
@@ -201,13 +204,13 @@ public class AdopterCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterCatService
+     * Method Testing <b>update()</b> в AdopterCatService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findById</b> и <b>AdopterCatRepository::save</b>,
-     * возвращается отредактированный усыновитель с котом <b>expected</b>
+     * Mockito: when the method is called <b>AdopterCatRepository::findById</b> и <b>AdopterCatRepository::save</b>,
+     * edited adopter returns with cat <b>expected</b>
      */
     @Test
-    @DisplayName("Проверка добавления кота в качестве поля объекта усыновитель")
+    @DisplayName("Checking if a cat is added as a field of the adopter object")
     public void updateFieldCatIdByAdopterCat() {
         expected.setCat(new Cat(1L, "Ponchik", "Bolinez", 2020, "Test1"));
         when(adopterCatRepository.findById(any(Long.class))).thenReturn(Optional.of(expected));
@@ -221,13 +224,13 @@ public class AdopterCatServiceTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterCatService
+     * Method Testing <b>update()</b> в AdopterCatService
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findById</b> и <b>AdopterCatRepository::save</b>,
-     * возвращается отредактированный усыновитель с коллекцией отчетов о котах <b>adopterCats</b>
+     * Mockito: when the method is called <b>AdopterCatRepository::findById</b> и <b>AdopterCatRepository::save</b>,
+     * edited adopter returns with collection of cat reports <b>adopterCats</b>
      */
     @Test
-    @DisplayName("Проверка добавления списка отчетов в качестве поля объекта усыновитель")
+    @DisplayName("Validate adding a list of reports as a field of the adopter object")
     public void updateFieldReportAdopterCat() {
         ReportCat expectedTest1 = new ReportCat();
         expectedTest1.setId(1L);

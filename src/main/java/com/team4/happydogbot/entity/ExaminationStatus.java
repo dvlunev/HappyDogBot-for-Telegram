@@ -1,14 +1,15 @@
 package com.team4.happydogbot.entity;
 
 /**
- * Класс, содержащий параметры для всех состояний
+ * Class containing parameters for all states
+ *
  * @see ReportCat
  * @see ReportDog
  */
 public enum ExaminationStatus {
-    ACCEPTED ("Отчет проверен и принят"),
-    UNCHECKED ("Отчет не проверен"),
-    REJECTED ("Отчет проверен и отправлен на доработку");
+    ACCEPTED("Report reviewed and accepted"),
+    UNCHECKED("Report not verified"),
+    REJECTED("Report reviewed and sent for revision");
 
     private final String examinationStatus;
 

@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 /**
- * Тест - класс для проверки создания отчета о коте
+ * Test class to test the creation of a cat report
+ *
  * @see ReportCat
  * @see ReportCatTest
  */
@@ -18,10 +19,10 @@ public class ReportCatTest {
     private final String fileId = "Test124578";
     private final String caption = "Рацион: гуд; Самочувствие: гуд; Поведение: гуд";
     private final ExaminationStatus examinationStatus = ExaminationStatus.UNCHECKED;
-    ReportCat reportCat = new ReportCat(id, reportDate, fileId, caption,examinationStatus);
+    ReportCat reportCat = new ReportCat(id, reportDate, fileId, caption, examinationStatus);
 
     @Test
-    @DisplayName("Проверка на наличие данных при создании отчета о коте")
+    @DisplayName("Checking for data when creating a cat report")
     public void createReportCatTest() {
         Long reportId = reportCat.getId();
         LocalDate reportDateCat = reportCat.getReportDate();
@@ -37,7 +38,7 @@ public class ReportCatTest {
     }
 
     @Test
-    @DisplayName("Проверка на отсутствие переданных данных при создании отчета о коте")
+    @DisplayName("Checking for the absence of transmitted data when creating a cat report")
     public void createReportCatNullTest() {
         ReportCat reportCatTest = new ReportCat();
         Long reportId = reportCatTest.getId();

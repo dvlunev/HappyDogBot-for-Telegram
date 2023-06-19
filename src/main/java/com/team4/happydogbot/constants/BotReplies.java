@@ -1,10 +1,12 @@
 package com.team4.happydogbot.constants;
 
 
-
+/**
+ * The class contains constants with replies that the bot can give
+ */
 public class BotReplies {
 
-    // Ответы этап 0. Входная точка общения бота с пользователем
+    // Replies stage 0. The entry point of communication between the bot and the user
     public static final String MESSAGE_TEXT_GREETINGS = ", приветствую! Чтобы найти то, что вам нужно - нажмите на кнопку";
     public static final String MESSAGE_TEXT_CHOOSE_SHELTER = "Выберите приют";
     public static final String MESSAGE_TEXT_CHOOSE_ACTION = "Выберите действие";
@@ -13,13 +15,13 @@ public class BotReplies {
     public static final String MESSAGE_TEXT_TALK_ENDED = "Разговор с волонтером завершен";
     public static final String MESSAGE_TEXT_WAS_SENT = "Ваше сообщение отправлено, волонтер скоро ответит Вам";
 
-    // Ответы этап 1. Вводная информация о приюте: где он находится, как и когда работает,
-    // какие правила пропуска на территорию приюта, правила нахождения внутри и общения с животными.
+    // Replies stage 1. Introductory information about the shelter: where it is located, how and when it works,
+    // what are the rules for admission to the territory of the shelter, the rules for staying inside and communicating with animals.
     public static final String MESSAGE_TEXT_SHELTER_INFO = "Что именно вы хотите узнать о приюте?";
     public static final String MESSAGE_TEXT_SEND_CONTACT_CHOOSE = "Выберите что хотите отправить";
     public static final String MESSAGE_TEXT_SEND_CONTACT_SUCCESS = "Данные успешно отправлены";
 
-    //Приют для собак
+    // Dog shelter
     public static final String MESSAGE_DOG_SHELTER_ABOUT = "Приют для бездомных животных «HappyDog» создан Городским " +
             "благотворительным фондом «Добрые руки» в 2004 году. С момента основания приюта и до настоящего времени приют " +
             "существует на личные средства учредителей и добровольные пожертвования организаций и частных лиц. " +
@@ -30,7 +32,7 @@ public class BotReplies {
             " Животных кормят 2 раза в сутки тёплой свежеприготовленной пищей. В приюте работают 8 человек: " +
             "директор приюта -  ветеринар, 5 рабочих по уходу за животными, 2 сторожа.";
     public static final String MESSAGE_DOG_SHELTER_SCHEDULE_ADDRESS = "Приют расположен по адресу Томская область, Томский район, " +
-            "деревня Новомихайловка, пер.Колхозный, строение 1.\n"+
+            "деревня Новомихайловка, пер.Колхозный, строение 1.\n" +
             "Время работы: Прием и выдача животных осуществляется в рабочие дни (с понедельника по пятницу) с 9:00 до 16:00." +
             "Очень желательны пожертвования от людей, которые хотят взять или сдать животное в приют. " +
             "С целью познакомиться и посмотреть животных очень просим Вас приезжать в приют до 17 часов, " +
@@ -47,7 +49,7 @@ public class BotReplies {
     public static final String MESSAGE_DOG_CAR_PASS = "Контактные данные охраны для оформления пропуска на машину";
     public static final String MESSAGE_DOG_SEND_CONTACT = "ОТПРАВКА КОНТАКТНЫХ ДАННЫХ в таблицу приюта для собак";
 
-    //Приют для кошек
+    // Cat shelter
     public static final String MESSAGE_CAT_SHELTER_ABOUT = "Информация о приюте для кошек";
     public static final String MESSAGE_CAT_SHELTER_SCHEDULE_ADDRESS = "Адрес и расписание работы приюта для кошек";
     public static final String MESSAGE_CAT_SHELTER_SAFETY = "Правила техники безопасности в приюте для кошек";
@@ -55,12 +57,11 @@ public class BotReplies {
     public static final String MESSAGE_CAT_SEND_CONTACT = "ОТПРАВКА КОНТАКТНЫХ ДАННЫХ в таблицу приюта для кошек";
 
 
-
-    // Ответы этап 2. Помощь потенциальным «усыновителям» собаки из приюта
-    // с бюрократическими (как оформить договор) и бытовыми (как подготовиться к жизни с собакой) вопросами.
+    // Answers stage 2. Helping potential adopters of a dog from a shelter
+    // with bureaucratic (how to draw up a contract) and everyday (how to prepare for life with a dog) questions.
     public static final String MESSAGE_TEXT_PET_INFO = "Что вас интересует?";
 
-    //Приют для собак
+    // Dog shelter
     public static final String MESSAGE_DOG_RULES = "Перед посещение приюта ознакомьтесь, как правильно контактировать" +
             " с собакой по следующим пунктам:\n" +
             "1. Замедление темпа сближения.\n" +
@@ -104,7 +105,7 @@ public class BotReplies {
             "4. Съемное жилье.\n" +
             "5. Животное в подарок или для работы.\n";
 
-    //Приют для кошек
+    // Cat shelter
     public static final String MESSAGE_CAT_RULES = "Правила посещения приюта для кошек";
     public static final String MESSAGE_CAT_DOCS = "Необходимые документы чтобы взять кошеку";
     public static final String MESSAGE_CAT_TRANSPORT = "Рекомендации по транспортировке кошек";
@@ -112,7 +113,7 @@ public class BotReplies {
     public static final String MESSAGE_CAT_REFUSAL = "Причины отказа";
 
 
-    //Этап 3. Ведение питомца. Ответы и сообщения
+    // Stage 3. Maintaining a pet. Replies and messages
     public static final String MESSAGE_TEXT_REPORT = "После того, как вы забрали животное из приюта, " +
             "вы обязаны в течение месяца присылать информацию о том, как оно чувствует себя на новом месте.";
     public static final String MESSAGE_TEXT_REPORT_FORM = "В ежедневный отчет входит следующая информация:\n" +
@@ -152,7 +153,7 @@ public class BotReplies {
     public static final String MESSAGE_THANKS_FOR_REPLY = "Благодарим за отчет, волонтер проверит его и " +
             "если что-то будет не так, даст Вам обратную связь";
 
-    //Этап 3. Ответы пользователям по принятым решениям об усыновлении
+    // Stage 3. Responses to users on adoption decisions made
     public static final String MESSAGE_DECISION_FINISH =
             "Вы успешно прошли испытательный срок! Поздравляем с пополнением в семье!";
     public static final String MESSAGE_DECISION_EXTEND_14 =

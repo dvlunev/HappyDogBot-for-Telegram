@@ -22,8 +22,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Тест - класс для проверки API endpoints при обращении к маршрутам отдельными HTTP методами
- * для класса - сервиса усыновителя котов
+ * Test class for checking API endpoints when accessing routes with separate HTTP methods
+ * for the class - service of the adopter of cats
+ *
  * @see AdopterCat
  * @see AdopterCatService
  * @see AdopterCatController
@@ -86,15 +87,16 @@ public class AdopterCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в AdopterCatController
+     * Method Testing <b>add()</b> в AdopterCatController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatService::add</b>,
-     * возвращается статус 200 и усыновитель кота <b>expected</b>
+     * Mockito: when the method is called <b>AdopterCatService::add</b>,
+     * return status 200 and adopter of the cat <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения усыновителя кота " +
-            "при попытке его создания и сохранения в базе данных")
+    @DisplayName("Checking for status 200 and return of the adopter cat " +
+            "when trying to create it and store it in the database")
     void addAdopterCatTest200() throws Exception {
         when(adopterCatService.add(expected)).thenReturn(expected);
 
@@ -107,14 +109,15 @@ public class AdopterCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в AdopterCatController
+     * Method Testing <b>get()</b> в AdopterCatController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatService::get</b>,
-     * возвращается статус 200 и усыновитель кота <b>expected</b>
+     * Mockito: when the method is called <b>AdopterCatService::get</b>,
+     * return status 200 and adopter of the cat <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения усыновителя кота при попытке его поиска по chatId")
+    @DisplayName("Checking for getting status 200 and returning the adopter of the cat when trying to search for it by chatId")
     public void getAdopterCatTest200() throws Exception {
         Long chatId = expected.getChatId();
 
@@ -127,17 +130,18 @@ public class AdopterCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в AdopterCatController
+     * Method Testing <b>get()</b> в AdopterCatController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatService::get</b>,
-     * выбрасывается исключение <b>AdopterCatNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionAdopterCat</b>
+     * Mockito: when the method is called <b>AdopterCatService::get</b>,
+     * an exception is thrown <b>AdopterCatNotFoundException</b> и
+     * return status 404 <b>exceptionAdopterCat</b>
+     *
      * @throws Exception
      * @throws AdopterCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке поиска по chatId " +
-            "усыновителя кота, которого нет в базе данных")
+    @DisplayName("Checking for status 404 when trying to search by chatId " +
+            "an adopter of a cat that is not in the database")
     void getAdopterCatTest404() throws Exception {
         when(adopterCatService.get(anyLong())).thenThrow(AdopterCatNotFoundException.class);
 
@@ -147,14 +151,15 @@ public class AdopterCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в AdopterCatController
+     * Method Testing <b>delete()</b> в AdopterCatController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatService::remove</b>,
-     * возвращается статус 200 <b>expected</b>
+     * Mockito: when the method is called <b>AdopterCatService::remove</b>,
+     * return status 200 <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке удалить усыновителя кота из базы данных по chatId")
+    @DisplayName("Checking for status 200 when trying to remove an adopter from the database by chatId")
     public void deleteAdopterCatTest200() throws Exception {
         Long chatId = expected.getChatId();
 
@@ -166,17 +171,18 @@ public class AdopterCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в AdopterCatController
+     * Method Testing <b>delete()</b> в AdopterCatController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatService::remove</b>,
-     * выбрасывается исключение <b>AdopterCatNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionAdopterCat</b>
+     * Mockito: when the method is called <b>AdopterCatService::remove</b>,
+     * an exception is thrown <b>AdopterCatNotFoundException</b> и
+     * return status 404 <b>exceptionAdopterCat</b>
+     *
      * @throws Exception
      * @throws AdopterCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке удалить по chatId " +
-            "усыновителя кота, которого нет в базе данных ")
+    @DisplayName("Checking for status 404 when trying to delete by chatId " +
+            "an adopter of a cat that is not in the database")
     public void deleteAdopterCatTest404() throws Exception {
         Long chatId = exceptionAdopterCat.getChatId();
 
@@ -188,14 +194,15 @@ public class AdopterCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterCatController
+     * Method Testing <b>update()</b> в AdopterCatController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatService::update</b>,
-     * возвращается статус 200 и отредактированный усыновитель кота <b>expected</b>
+     * Mockito: when the method is called <b>AdopterCatService::update</b>,
+     * return status 200 and edited cat adopter <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке обновить и сохранить усыновителя кота в базе данных")
+    @DisplayName("Checking for status 200 when trying to update and save an adopter cat in the database")
     public void updateAdopterCatTest200() throws Exception {
         when(adopterCatService.update(expected)).thenReturn(expected);
 
@@ -215,17 +222,18 @@ public class AdopterCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterCatController
+     * Method Testing <b>update()</b> в AdopterCatController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatService::update</b>,
-     * выбрасывается исключение <b>AdopterCatNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionAdopterCat</b>
+     * Mockito: when the method is called <b>AdopterCatService::update</b>,
+     * an exception is thrown <b>AdopterCatNotFoundException</b> и
+     * return status 404 <b>exceptionAdopterCat</b>
+     *
      * @throws Exception
      * @throws AdopterCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке обновить и сохранить " +
-            "усыновителя кота, которого нет в базе данных")
+    @DisplayName("Checking for a 404 status when trying to update and save " +
+            "an adopter of a cat that is not in the database")
     public void updateAdopterCatTest404() throws Exception {
         when(adopterCatService.update(exceptionAdopterCat)).thenThrow(AdopterCatNotFoundException.class);
 
@@ -237,14 +245,14 @@ public class AdopterCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в AdopterCatController
+     * Method Testing <b>getAll()</b> в AdopterCatController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterCatService::getAll</b>,
-     * возвращается статус 200 и коллекция усыновителей котов <b>Arrays.asList(expected, expected1)</b>
+     * Mockito: when the method is called <b>AdopterCatService::getAll</b>,
+     * return status 200 and collection of cat adopters <b>Arrays.asList(expected, expected1)</b>
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения всех усыновителей котов " +
-            "при попытке их поиска в базе данных")
+    @DisplayName("Verification of obtaining status 200 and the return of all adopters of cats " +
+            "when trying to find them in the database")
     void getAllAdopterCatsTest200() throws Exception {
         when(adopterCatService.getAll()).thenReturn(Arrays.asList(expected, expected1));
 
@@ -255,7 +263,7 @@ public class AdopterCatControllerTest {
     }
 
     @Test
-    @DisplayName("Проверка получения статуса 200 при отправке сообщения пользователю")
+    @DisplayName("Checking for status 200 when sending a message to a user")
     public void sendMessageWithValidChatId() throws Exception {
         Long chatId = expected.getChatId();
         String textToSend = "Hello, world!";
@@ -269,7 +277,7 @@ public class AdopterCatControllerTest {
     }
 
     @Test
-    @DisplayName("Проверка получения статуса 404 при отправке сообщения пользователю которого не существует")
+    @DisplayName("Checking for a 404 status when sending a message to a user that doesn't exist")
     public void sendMessageWithInvalidChatId() throws Exception {
         Long chatId = anyLong();
         String textToSend = "Hello, world!";

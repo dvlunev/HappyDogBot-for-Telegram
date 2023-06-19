@@ -21,8 +21,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Тест - класс для проверки API endpoints при обращении к маршрутам отдельными HTTP методами
- * для класса - сервиса котов
+ * Test class for checking API endpoints when accessing routes with separate HTTP methods
+ * for the class - cat service
+ *
  * @see Cat
  * @see CatService
  * @see CatController
@@ -73,14 +74,15 @@ public class CatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в CatController
+     * Method Testing <b>add()</b> в CatController
      * <br>
-     * Mockito: когда вызывается метод <b>CatService::add</b>,
-     * возвращается статус 200 и кот <b>expected</b>
+     * Mockito: when the method is called <b>CatService::add</b>,
+     * returns status 200 and cat <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения кота при попытке его создания и сохранения в базе данных")
+    @DisplayName("Checking for getting status 200 and returning a cat when trying to create it and save it to the database")
     void addCatTest200() throws Exception {
         when(catService.add(expected)).thenReturn(expected);
 
@@ -93,14 +95,15 @@ public class CatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в CatController
+     * Method Testing <b>get()</b> в CatController
      * <br>
-     * Mockito: когда вызывается метод <b>CatService::get</b>,
-     * возвращается статус 200 и кот <b>expected</b>
+     * Mockito: when the method is called <b>CatService::get</b>,
+     * returns status 200 and cat <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения кота при попытке его поиска по id")
+    @DisplayName("Checking for status 200 and returning a cat when trying to search for it by id")
     public void getCatTest200() throws Exception {
         Long catId = expected.getId();
 
@@ -113,33 +116,35 @@ public class CatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в CatController
+     * Method Testing <b>get()</b> в CatController
      * <br>
-     * Mockito: когда вызывается метод <b>CatService::get</b>,
-     * выбрасывается исключение <b>CatNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionCat</b>
+     * Mockito: when the method is called <b>CatService::get</b>,
+     * an exception is thrown <b>CatNotFoundException</b> и
+     * returns status 404 <b>exceptionCat</b>
+     *
      * @throws Exception
      * @throws CatNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке поиска по id кота, которого нет в базе данных")
+    @DisplayName("Checking for status 404 when trying to search by id of a cat that is not in the database")
     void getCatTest404() throws Exception {
         when(catService.get(anyLong())).thenThrow(CatNotFoundException.class);
 
         mockMvc.perform(
-                get("/cat/{id}", exceptionCat.getId().toString()))
+                        get("/cat/{id}", exceptionCat.getId().toString()))
                 .andExpect(status().isNotFound());
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в CatController
+     * Method Testing <b>delete()</b> в CatController
      * <br>
-     * Mockito: когда вызывается метод <b>CatService::remove</b>,
-     * возвращается статус 200 <b>expected</b>
+     * Mockito: when the method is called <b>CatService::remove</b>,
+     * returns status 200 <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке удалить кота из базы данных по id")
+    @DisplayName("Checking for status 200 when trying to remove a cat from the database by id")
     public void deleteCatTest200() throws Exception {
         Long catId = expected.getId();
 
@@ -151,16 +156,17 @@ public class CatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в CatController
+     * Method Testing <b>delete()</b> в CatController
      * <br>
-     * Mockito: когда вызывается метод <b>CatService::remove</b>,
-     * выбрасывается исключение <b>CatNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionCat</b>
+     * Mockito: when the method is called <b>CatService::remove</b>,
+     * an exception is thrown <b>CatNotFoundException</b> и
+     * returns status 404 <b>exceptionCat</b>
+     *
      * @throws Exception
      * @throws CatNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке удалить по id кота, которого нет в базе данных ")
+    @DisplayName("Checking for status 404 when trying to delete by id a cat that is not in the database")
     public void deleteCatTest404() throws Exception {
         Long catId = exceptionCat.getId();
 
@@ -172,14 +178,15 @@ public class CatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в CatController
+     * Method Testing <b>update()</b> в CatController
      * <br>
-     * Mockito: когда вызывается метод <b>CatService::update</b>,
-     * возвращается статус 200 и отредактированный кот <b>expected</b>
+     * Mockito: when the method is called <b>CatService::update</b>,
+     * returns status 200 and an edited cat <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке обновить и сохранить кота в базе данных")
+    @DisplayName("Checking for status 200 when trying to update and save a cat in the database")
     public void updateCatTest200() throws Exception {
         when(catService.update(expected)).thenReturn(expected);
 
@@ -196,34 +203,35 @@ public class CatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в CatController
+     * Method Testing <b>update()</b> в CatController
      * <br>
-     * Mockito: когда вызывается метод <b>CatService::update</b>,
-     * выбрасывается исключение <b>CatNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionCat</b>
+     * Mockito: when the method is called <b>CatService::update</b>,
+     * an exception is thrown <b>CatNotFoundException</b> и
+     * returns status 404 <b>exceptionCat</b>
+     *
      * @throws Exception
      * @throws CatNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке обновить и сохранить кота, которого нет в базе данных")
+    @DisplayName("Checking for a 404 status when trying to update and save a cat that is not in the database")
     public void updateCatTest404() throws Exception {
         when(catService.update(exceptionCat)).thenThrow(CatNotFoundException.class);
 
         mockMvc.perform(
-                put("/cat")
-                        .content(objectMapper.writeValueAsString(exceptionCat))
-                        .contentType(MediaType.APPLICATION_JSON))
+                        put("/cat")
+                                .content(objectMapper.writeValueAsString(exceptionCat))
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в CatController
+     * Method Testing <b>getAll()</b> в CatController
      * <br>
-     * Mockito: когда вызывается метод <b>CatService::getAll</b>,
-     * возвращается статус 200 и коллекция котов <b>Arrays.asList(expected, expected1)</b>
+     * Mockito: when the method is called <b>CatService::getAll</b>,
+     * returns status 200 and cats collection <b>Arrays.asList(expected, expected1)</b>
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения всех котов при попытке их поиска в базе данных")
+    @DisplayName("Checking for getting status 200 and returning all cats when trying to search for them in the database")
     void getAllCatsTest200() throws Exception {
         when(catService.getAll()).thenReturn(Arrays.asList(expected, expected1));
 

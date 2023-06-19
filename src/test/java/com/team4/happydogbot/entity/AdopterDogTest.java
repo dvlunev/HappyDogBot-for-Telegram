@@ -5,7 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Тест - класс для проверки создания усыновителя собаки
+ * Test class to test the creation of an adopter dog
+ *
  * @see AdopterDog
  * @see AdopterDogTest
  */
@@ -22,7 +23,7 @@ public class AdopterDogTest {
     AdopterDog adopterDog = new AdopterDog(chatId, firstName, lastName, userName, age, address, telephoneNumber, state);
 
     @Test
-    @DisplayName("Проверка на наличие данных при создании усыновителя собаки")
+    @DisplayName("Checking for data when creating an adopter dog")
     public void createAdopterDogTest() {
         Long chatIdAD = adopterDog.getChatId();
         String firstNameAD = adopterDog.getFirstName();
@@ -44,7 +45,7 @@ public class AdopterDogTest {
     }
 
     @Test
-    @DisplayName("Проверка на отсутствие переданных данных при создании усыновителя собаки")
+    @DisplayName("Checking for the absence of transmitted data when creating an adopter dog")
     public void createAdopterDogNullTest() {
         AdopterDog adopterDogTest = new AdopterDog();
         Long chatIdAD = adopterDogTest.getChatId();

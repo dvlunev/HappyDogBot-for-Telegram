@@ -24,8 +24,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Тест - класс для проверки API endpoints при обращении к маршрутам отдельными HTTP методами
- * для класса - сервиса отчетов о котах
+ * Test class for checking API endpoints when accessing routes with separate HTTP methods
+ * for class - cat reporting service
+ *
  * @see ReportCat
  * @see ReportCatService
  * @see ReportCatController
@@ -76,15 +77,16 @@ public class ReportCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в ReportCatController
+     * Method Testing <b>add()</b> в ReportCatController
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatService::add</b>,
-     * возвращается статус 200 и отчет о коте <b>expected</b>
+     * Mockito: when the method is called <b>ReportCatService::add</b>,
+     * returns status 200 and cat report <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения отчета о коте " +
-            "при попытке его создания и сохранения в базе данных")
+    @DisplayName("Checking for Status 200 Receipt and Cat Report Return" +
+            "when trying to create it and store it in the database")
     void addReportCatTest200() throws Exception {
         when(reportCatService.add(expected)).thenReturn(expected);
 
@@ -97,14 +99,15 @@ public class ReportCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в ReportCatController
+     * Method Testing <b>get()</b> в ReportCatController
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatService::get</b>,
-     * возвращается статус 200 и отчет о коте <b>expected</b>
+     * Mockito: when the method is called <b>ReportCatService::get</b>,
+     * returns status 200 and cat report <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения отчета о коте при попытке его поиска по id")
+    @DisplayName("Checking for getting status 200 and returning a report about a cat when trying to search for it by id")
     public void getReportCatTest200() throws Exception {
         Long id = expected.getId();
 
@@ -117,17 +120,18 @@ public class ReportCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в ReportCatController
+     * Method Testing <b>get()</b> в ReportCatController
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatService::get</b>,
-     * выбрасывается исключение <b>ReportCatNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionReportCat</b>
+     * Mockito: when the method is called <b>ReportCatService::get</b>,
+     * an exception is thrown <b>ReportCatNotFoundException</b> и
+     * returns status 404 <b>exceptionReportCat</b>
+     *
      * @throws Exception
      * @throws ReportCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке поиска по id " +
-            "отчета о коте, которого нет в базе данных")
+    @DisplayName("Checking for status 404 when trying to search by id" +
+            "a report about a cat that is not in the database")
     void getReportCatTest404() throws Exception {
         when(reportCatService.get(anyLong())).thenThrow(ReportCatNotFoundException.class);
 
@@ -137,16 +141,17 @@ public class ReportCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>getPhoto()</b> в ReportCatController
+     * Method Testing <b>getPhoto()</b> в ReportCatController
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatService::get</b>,
-     * возвращается статус 200 и отчет о кошке <b>expected</b>
-     * Mockito: когда вызывается метод <b>ReportCatService::getFile</b>,
-     * возвращается статус 200 и байты файла <b>fileContent</b>
+     * Mockito: when the method is called <b>ReportCatService::get</b>,
+     * returns status 200 and cat report <b>expected</b>
+     * Mockito: when the method is called <b>ReportCatService::getFile</b>,
+     * return status 200 and file bytes <b>fileContent</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения фото отчета о собаке при попытке его поиска по id")
+    @DisplayName("Checking for getting status 200 and returning a photo report about a cat when trying to search for it by id")
     public void getPhotoTest200() throws Exception {
         Long id = expected.getId();
         byte[] fileContent = "test photo file".getBytes();
@@ -166,14 +171,15 @@ public class ReportCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в ReportCatController
+     * Method Testing <b>delete()</b> в ReportCatController
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatService::remove</b>,
-     * возвращается статус 200 <b>expected</b>
+     * Mockito: when the method is called <b>ReportCatService::remove</b>,
+     * returns status 200 <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке удалить отчет о коте из базы данных по id")
+    @DisplayName("Checking for status 200 when trying to delete a cat report from the database by id")
     public void deleteReportCatTest200() throws Exception {
         Long id = expected.getId();
 
@@ -185,17 +191,18 @@ public class ReportCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в ReportCatController
+     * Method Testing <b>delete()</b> в ReportCatController
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatService::remove</b>,
-     * выбрасывается исключение <b>ReportCatNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionReportCat</b>
+     * Mockito: when the method is called <b>ReportCatService::remove</b>,
+     * an exception is thrown <b>ReportCatNotFoundException</b> и
+     * returns status 404 <b>exceptionReportCat</b>
+     *
      * @throws Exception
      * @throws ReportCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке удалить по id " +
-            "отчет о коте, которого нет в базе данных ")
+    @DisplayName("Checking for status 404 when trying to delete by id" +
+            "report about a cat that is not in the database")
     public void deleteReportCatTest404() throws Exception {
         Long id = exceptionReportCat.getId();
 
@@ -207,14 +214,15 @@ public class ReportCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в ReportCatController
+     * Method Testing <b>update()</b> в ReportCatController
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatService::update</b>,
-     * возвращается статус 200 и отредактированный отчет о коте <b>expected</b>
+     * Mockito: when the method is called <b>ReportCatService::update</b>,
+     * returns status 200 and edited cat report <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке обновить и сохранить отчет о коте в базе данных")
+    @DisplayName("Checking for getting status 200 when trying to update and save the cat report to the database")
     public void updateReportCatTest200() throws Exception {
         when(reportCatService.update(expected)).thenReturn(expected);
 
@@ -231,17 +239,18 @@ public class ReportCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в ReportCatController
+     * Method Testing <b>update()</b> в ReportCatController
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatService::update</b>,
-     * выбрасывается исключение <b>ReportCatNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionReportCat</b>
+     * Mockito: when the method is called <b>ReportCatService::update</b>,
+     * an exception is thrown <b>ReportCatNotFoundException</b> и
+     * returns status 404 <b>exceptionReportCat</b>
+     *
      * @throws Exception
      * @throws ReportCatNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке обновить и сохранить " +
-            "отчет о коте, которого нет в базе данных")
+    @DisplayName("Checking for a 404 status when trying to update and save" +
+            "report about a cat that is not in the database")
     public void updateReportCatTest404() throws Exception {
         when(reportCatService.update(exceptionReportCat)).thenThrow(ReportCatNotFoundException.class);
 
@@ -253,14 +262,14 @@ public class ReportCatControllerTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в ReportCatController
+     * Method Testing <b>getAll()</b> в ReportCatController
      * <br>
-     * Mockito: когда вызывается метод <b>ReportCatService::getAll</b>,
-     * возвращается статус 200 и коллекция отчетов о котах <b>Arrays.asList(expected, expected1)</b>
+     * Mockito: when the method is called <b>ReportCatService::getAll</b>,
+     * returns status 200 and cat reports collection <b>Arrays.asList(expected, expected1)</b>
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения всех отчетов о котах " +
-            "при попытке их поиска в базе данных")
+    @DisplayName("Checking for Status 200 Receipt and Return of All Cat Reports" +
+            "when trying to find them in the database")
     void getAllReportCatsTest200() throws Exception {
         when(reportCatService.getAll()).thenReturn(Arrays.asList(expected, expected1));
 

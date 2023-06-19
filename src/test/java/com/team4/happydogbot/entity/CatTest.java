@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Тест - класс для проверки создания кота
+ * Test class to test a cat creation
  * @see Cat
  * @see CatTest
  */
@@ -19,7 +19,7 @@ public class CatTest {
     Cat catTest = new Cat(id, name, breed, yearOfBirth, description);
 
     @Test
-    @DisplayName("Проверка на наличие данных при создании кота")
+    @DisplayName("Checking for data when creating a cat")
     public void createCatTest() {
         Long catId = catTest.getId();
         String catName = catTest.getName();
@@ -35,7 +35,7 @@ public class CatTest {
     }
 
     @Test
-    @DisplayName("Проверка на отсутствие переданных данных при создании кота")
+    @DisplayName("Checking for the absence of transmitted data when creating a cat")
     public void createCatNullTest() {
         Cat catTest = new Cat();
         Long catId = catTest.getId();

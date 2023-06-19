@@ -4,7 +4,8 @@ import com.team4.happydogbot.entity.Cat;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Интерфейс, содержащий методы для работы с базой данных животных
+ * Interface containing methods for working with the animal database
+ *
  * @see Cat
  * @see com.team4.happydogbot.service.CatService
  */

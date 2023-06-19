@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 /**
- * Тест - класс для проверки создания отчета о собаке
+ * Test class to test the creation of a dog report
+ *
  * @see ReportDog
  * @see ReportDogTest
  */
@@ -21,7 +22,7 @@ public class ReportDogTest {
     ReportDog reportDog = new ReportDog(id, reportDate, fileId, caption, examinationStatus);
 
     @Test
-    @DisplayName("Проверка на наличие данных при создании отчета о коте")
+    @DisplayName("Checking for data when creating a dog report")
     public void createReportDogTest() {
         Long reportId = reportDog.getId();
         LocalDate reportDateDog = reportDog.getReportDate();
@@ -37,7 +38,7 @@ public class ReportDogTest {
     }
 
     @Test
-    @DisplayName("Проверка на отсутствие переданных данных при создании отчета о коте")
+    @DisplayName("Checking for the absence of transmitted data when creating a dog report")
     public void createReportDogNullTest() {
         ReportCat reportDogTest = new ReportCat();
         Long reportId = reportDogTest.getId();

@@ -15,7 +15,8 @@ import java.nio.file.Files;
 import java.util.Collection;
 
 /**
- *Класс - сервис, содержащий набор CRUD операций над объектом ReportCat
+ * Service class containing a set of CRUD operations on the ReportCat object
+ *
  * @see ReportCat
  * @see ReportCatRepository
  */
@@ -34,7 +35,8 @@ public class ReportCatService {
     }
 
     /**
-     * Метод сохраняет отчет пользователя
+     * The method saves the user's report
+     *
      * @param reportCat
      * @return {@link ReportCatRepository#save(Object)}
      * @see ReportCatService
@@ -45,10 +47,11 @@ public class ReportCatService {
     }
 
     /**
-     * Метод находит и возвращает отчет по id
+     * The method finds and returns a report by id
+     *
      * @param id
      * @return {@link ReportCatRepository#findById(Object)}
-     * @throws ReportCatNotFoundException если отчет с указанным id не найден
+     * @throws ReportCatNotFoundException if the report with the specified id is not found
      * @see ReportCatService
      */
     public ReportCat get(Long id) {
@@ -58,9 +61,10 @@ public class ReportCatService {
     }
 
     /**
-     * Метод находит и удаляет отчет по id
+     * The method finds and deletes a report by id
+     *
      * @param id
-     * @throws ReportCatNotFoundException если отчет с указанным id не найден
+     * @throws ReportCatNotFoundException if the report with the specified id is not found
      * @see ReportCatService
      */
     public boolean remove(Long id) {
@@ -73,10 +77,11 @@ public class ReportCatService {
     }
 
     /**
-     * Метод обновляет и возвращает отчет
+     * The method updates and returns the report
+     *
      * @param reportCat
      * @return {@link ReportCatRepository#save(Object)}
-     * @throws ReportCatNotFoundException если отчет с указанным id не найден
+     * @throws ReportCatNotFoundException if the report with the specified id is not found
      * @see ReportCatService
      */
     public ReportCat update(ReportCat reportCat) {
@@ -93,7 +98,8 @@ public class ReportCatService {
     }
 
     /**
-     * Метод находит и возвращает все отчеты
+     * The method finds and returns all reports
+     *
      * @return {@link ReportCatRepository#findAll()}
      * @see ReportCatService
      */
@@ -103,10 +109,11 @@ public class ReportCatService {
     }
 
     /**
-     * Метод находит в базе данных fileId фотографии к отчету, делает запрос Telegram на получение файла фотографии,
-     * получает фотографию, читает и возвращает byte фотографии
+     * The method finds the fileId of the photo for the report in the database, makes a Telegram request to receive the photo file,
+     * receives a photo, reads and returns a byte of the photo
+     *
      * @param id
-     * @return byte фотографии
+     * @return byte of the photo
      */
     public byte[] getFile(Long id) {
         log.info("Was invoked method to get a photo of the report by id={}", id);

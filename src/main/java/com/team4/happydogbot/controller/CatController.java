@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 /**
- * Класс - контроллер для объекта Cat, содержащий набор API endpoints
- * для обращения к маршрутам отдельными HTTP методами
+ * Controller class for a Cat object containing a set of API endpoints
+ * for accessing routes with separate HTTP methods
  *
  * @see Cat
  * @see CatService
@@ -27,7 +27,7 @@ import java.util.Collection;
  */
 @RestController
 @RequestMapping("/cat")
-@Tag(name = "Коты", description = "CRUD-операции и другие эндпоинты для работы с собаками")
+@Tag(name = "Cats", description = "CRUD operations and other endpoints for working with cats")
 public class CatController {
 
     private final CatService catService;
@@ -37,13 +37,13 @@ public class CatController {
     }
 
     @Operation(
-            summary = "Добавление кота",
-            description = "Добавление нового кота из тела запроса"
+            summary = "Adding a cat",
+            description = "Adding a new cat from the request body"
     )
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Кот был добавлен",
+                    description = "The cat has been added",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -53,7 +53,7 @@ public class CatController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Некорректные параметры кота",
+                    description = "Incorrect cat parameters",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -69,11 +69,11 @@ public class CatController {
         return ResponseEntity.ok(cat);
     }
 
-    @Operation(summary = "Получение кота по id",
+    @Operation(summary = "Getting a cat by id",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Кот, найденная по id",
+                            description = "A cat found by id",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = Cat.class)
@@ -88,7 +88,7 @@ public class CatController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Кот был найден",
+                    description = "The cat was found",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -98,7 +98,7 @@ public class CatController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Кот не был найден",
+                    description = "The cat was not found",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -117,11 +117,11 @@ public class CatController {
         return ResponseEntity.ok(dog);
     }
 
-    @Operation(summary = "Удаление кота по id",
+    @Operation(summary = "Deleting a cat by id",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Кот, найденная по id",
+                            description = "A cat found by id",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = Cat.class)
@@ -136,11 +136,11 @@ public class CatController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Кот удален"
+                    description = "Cat removed"
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Кот не был удален"
+                    description = "The cat has not been removed"
             )
     }
     )
@@ -153,13 +153,13 @@ public class CatController {
     }
 
     @Operation(
-            summary = "Изменение данных кота",
-            description = "Обновление данных кота из тела запроса"
+            summary = "Changing cat details",
+            description = "Update cat data from request body"
     )
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Данные кота обновлены",
+                    description = "Cat data updated",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -169,7 +169,7 @@ public class CatController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Данные кота не обновлены",
+                    description = "Cat data not updated",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -185,11 +185,11 @@ public class CatController {
         return ResponseEntity.ok(cat);
     }
 
-    @Operation(summary = "Просмотр всех котов",
+    @Operation(summary = "View all cats",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Коты найдены",
+                            description = "Cats found",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = Cat.class)

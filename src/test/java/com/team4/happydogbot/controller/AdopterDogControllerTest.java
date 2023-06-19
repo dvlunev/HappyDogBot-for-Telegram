@@ -22,8 +22,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Тест - класс для проверки API endpoints при обращении к маршрутам отдельными HTTP методами
- * для класса - сервиса усыновителей собак
+ * Test class for checking API endpoints when accessing routes with separate HTTP methods
+ * for the class - service of adoptive parents of dogs
+ *
  * @see AdopterDog
  * @see AdopterDogService
  * @see AdopterDogController
@@ -86,15 +87,16 @@ public class AdopterDogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>add()</b> в AdopterDogController
+     * Method Testing <b>add()</b> в AdopterDogController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogService::add</b>,
-     * возвращается статус 200 и усыновитель собаки <b>expected</b>
+     * Mockito: when the method is called <b>AdopterDogService::add</b>,
+     * return status 200 and dog adopter <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения усыновителя собаки " +
-            "при попытке его создания и сохранения в базе данных")
+    @DisplayName("Checking for Status 200 and Return of the Dog's Adopter " +
+            "when trying to create it and store it in the database")
     void addAdopterDogTest200() throws Exception {
         when(adopterDogService.add(expected)).thenReturn(expected);
 
@@ -107,14 +109,15 @@ public class AdopterDogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в AdopterDogController
+     * Method Testing <b>get()</b> в AdopterDogController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogService::get</b>,
-     * возвращается статус 200 и усыновитель собаки <b>expected</b>
+     * Mockito: when the method is called <b>AdopterDogService::get</b>,
+     * return status 200 and dog adopter <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения усыновителя собаки при попытке его поиска по chatId")
+    @DisplayName("Checking for getting status 200 and returning the dog's adopter when trying to search for him by chatId")
     public void getAdopterDogTest200() throws Exception {
         Long chatId = expected.getChatId();
 
@@ -127,17 +130,18 @@ public class AdopterDogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>get()</b> в AdopterDogController
+     * Method Testing <b>get()</b> в AdopterDogController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogService::get</b>,
-     * выбрасывается исключение <b>AdopterDogNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionAdopterDog</b>
+     * Mockito: when the method is called <b>AdopterDogService::get</b>,
+     * an exception is thrown <b>AdopterDogNotFoundException</b> и
+     * return status 404 <b>exceptionAdopterDog</b>
+     *
      * @throws Exception
      * @throws AdopterDogNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке поиска по chatId " +
-            "усыновителя собаки, которого нет в базе данных")
+    @DisplayName("Checking for status 404 when trying to search by chatId " +
+            "dog's adopter, which is not in the database")
     void getAdopterDogTest404() throws Exception {
         when(adopterDogService.get(anyLong())).thenThrow(AdopterDogNotFoundException.class);
 
@@ -147,14 +151,15 @@ public class AdopterDogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в AdopterDogController
+     * Method Testing <b>delete()</b> в AdopterDogController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogService::remove</b>,
-     * возвращается статус 200 <b>expected</b>
+     * Mockito: when the method is called <b>AdopterDogService::remove</b>,
+     * return status 200 <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке удалить усыновителя собаки из базы данных по chatId")
+    @DisplayName("Checking for status 200 when trying to remove a dog's adopter from the database by chatId")
     public void deleteAdopterDogTest200() throws Exception {
         Long chatId = expected.getChatId();
 
@@ -166,17 +171,18 @@ public class AdopterDogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>delete()</b> в AdopterDogController
+     * Method Testing <b>delete()</b> в AdopterDogController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogService::remove</b>,
-     * выбрасывается исключение <b>AdopterDogNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionAdopterDog</b>
+     * Mockito: when the method is called <b>AdopterDogService::remove</b>,
+     * an exception is thrown <b>AdopterDogNotFoundException</b> и
+     * return status 404 <b>exceptionAdopterDog</b>
+     *
      * @throws Exception
      * @throws AdopterDogNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке удалить по chatId " +
-            "усыновителя собаки, которого нет в базе данных ")
+    @DisplayName("Checking for status 404 when trying to delete by chatId " +
+            "dog's adopter, which is not in the database ")
     public void deleteAdopterDogTest404() throws Exception {
         Long chatId = exceptionAdopterDog.getChatId();
 
@@ -188,14 +194,15 @@ public class AdopterDogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterDogController
+     * Method Testing <b>update()</b> в AdopterDogController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogService::update</b>,
-     * возвращается статус 200 и отредактированный усыновитель собаки <b>expected</b>
+     * Mockito: when the method is called <b>AdopterDogService::update</b>,
+     * returns status 200 and edited dog adopter <b>expected</b>
+     *
      * @throws Exception
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 при попытке обновить и сохранить усыновителя собаки в базе данных")
+    @DisplayName("Checking for status 200 when trying to update and save dog adopter in database")
     public void updateAdopterDogTest200() throws Exception {
         when(adopterDogService.update(expected)).thenReturn(expected);
 
@@ -215,17 +222,18 @@ public class AdopterDogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>update()</b> в AdopterDogController
+     * Method Testing <b>update()</b> в AdopterDogController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogService::update</b>,
-     * выбрасывается исключение <b>AdopterDogNotFoundException</b> и
-     * возвращается статус 404 <b>exceptionAdopterDog</b>
+     * Mockito: when the method is called <b>AdopterDogService::update</b>,
+     * an exception is thrown <b>AdopterDogNotFoundException</b> и
+     * return status 404 <b>exceptionAdopterDog</b>
+     *
      * @throws Exception
      * @throws AdopterDogNotFoundException
      */
     @Test
-    @DisplayName("Проверка получения статуса 404 при попытке обновить и сохранить " +
-            "усыновителя собаки, которого нет в базе данных")
+    @DisplayName("Checking for a 404 status when trying to update and save " +
+            "dog's adopter, which is not in the database")
     public void updateAdopterDogTest404() throws Exception {
         when(adopterDogService.update(exceptionAdopterDog)).thenThrow(AdopterDogNotFoundException.class);
 
@@ -237,14 +245,14 @@ public class AdopterDogControllerTest {
     }
 
     /**
-     * Тестирование метода <b>getAll()</b> в AdopterDogController
+     * Method Testing <b>getAll()</b> в AdopterDogController
      * <br>
-     * Mockito: когда вызывается метод <b>AdopterDogService::getAll</b>,
-     * возвращается статус 200 и коллекция усыновителей собак <b>Arrays.asList(expected, expected1)</b>
+     * Mockito: when the method is called <b>AdopterDogService::getAll</b>,
+     * return status 200 and collection of dog adopters <b>Arrays.asList(expected, expected1)</b>
      */
     @Test
-    @DisplayName("Проверка получения статуса 200 и возвращения всех усыновителей собак " +
-            "при попытке их поиска в базе данных")
+    @DisplayName("Checking for Status 200 Receipt and Return of All Dog Adopters " +
+            "when trying to find them in the database")
     void getAllAdopterDogsTest200() throws Exception {
         when(adopterDogService.getAll()).thenReturn(Arrays.asList(expected, expected1));
 
@@ -255,7 +263,7 @@ public class AdopterDogControllerTest {
     }
 
     @Test
-    @DisplayName("Проверка получения статуса 200 при отправке сообщения пользователю")
+    @DisplayName("Checking for status 200 when sending a message to a user")
     public void sendMessageWithValidChatId() throws Exception {
         Long chatId = expected.getChatId();
         String textToSend = "Hello, world!";
@@ -269,7 +277,7 @@ public class AdopterDogControllerTest {
     }
 
     @Test
-    @DisplayName("Проверка получения статуса 404 при отправке сообщения пользователю которого не существует")
+    @DisplayName("Checking for a 404 status when sending a message to a user that doesn't exist")
     public void sendMessageWithInvalidChatId() throws Exception {
         Long chatId = anyLong();
         String textToSend = "Hello, world!";

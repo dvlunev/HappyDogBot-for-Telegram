@@ -5,7 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Тест - класс для проверки создания усыновителя кота
+ * Test class to test the creation of an adopter cat
+ *
  * @see AdopterCat
  * @see AdopterCatTest
  */
@@ -19,10 +20,10 @@ public class AdopterCatTest {
     private final String telephoneNumber = "79516532288";
     private final Status state = Status.REGISTRATION;
 
-    AdopterCat adopterCat = new AdopterCat(chatId, firstName, lastName, userName, age, address, telephoneNumber,state);
+    AdopterCat adopterCat = new AdopterCat(chatId, firstName, lastName, userName, age, address, telephoneNumber, state);
 
     @Test
-    @DisplayName("Проверка на наличие данных при создании усыновителя кота")
+    @DisplayName("Checking for data when creating an adopter cat")
     public void createAdopterCatTest() {
         Long chatIdAC = adopterCat.getChatId();
         String firstNameAC = adopterCat.getFirstName();
@@ -44,7 +45,7 @@ public class AdopterCatTest {
     }
 
     @Test
-    @DisplayName("Проверка на отсутствие переданных данных при создании усыновителя кота")
+    @DisplayName("Checking for the absence of transmitted data when creating an adopter cat")
     public void createAdopterCatNullTest() {
         AdopterCat adopterCatTest = new AdopterCat();
         Long chatIdAC = adopterCatTest.getChatId();

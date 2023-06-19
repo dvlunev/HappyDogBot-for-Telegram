@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 /**
- * Класс, описывающий обитателя собачьего приюта
+ * A class describing a dog shelter resident
+ *
  * @see Dog
  * @see AdopterDog
  */

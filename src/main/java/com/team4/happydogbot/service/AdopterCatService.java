@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 /**
- *Класс - сервис, содержащий набор CRUD операций над объектом AdopterCat
+ * Service class containing a set of CRUD operations on the AdopterCat object
+ *
  * @see AdopterCat
  * @see AdopterCatRepository
  */
@@ -28,7 +29,8 @@ public class AdopterCatService {
     }
 
     /**
-     * Метод создает нового пользователя
+     * The method creates a new user
+     *
      * @param adopterCat
      * @return {@link AdopterCatRepository#save(Object)}
      * @see AdopterCatService
@@ -39,10 +41,11 @@ public class AdopterCatService {
     }
 
     /**
-     * Метод находит и возвращает пользователя по id
+     * The method finds and returns the user by id
+     *
      * @param id
      * @return {@link AdopterCatRepository#findById(Object)}
-     * @throws AdopterCatNotFoundException если пользователь с указанным id не найден
+     * @throws AdopterCatNotFoundException if the user with the specified id is not found
      * @see AdopterCatService
      */
     public AdopterCat get(Long id) {
@@ -52,9 +55,10 @@ public class AdopterCatService {
     }
 
     /**
-     * Метод находит и удаляет пользователя по id
+     * The method finds and deletes a user by id
+     *
      * @param id
-     * @throws AdopterCatNotFoundException если пользователь с указанным id не найден
+     * @throws AdopterCatNotFoundException if the user with the specified id is not found
      * @see AdopterCatService
      */
     public boolean remove(Long id) {
@@ -67,10 +71,11 @@ public class AdopterCatService {
     }
 
     /**
-     * Метод обновляет и возвращает пользователя
+     * The method updates and returns the user
+     *
      * @param adopterCat
      * @return {@link AdopterCatRepository#save(Object)}
-     * @throws AdopterCatNotFoundException если пользователь с указанным id не найден
+     * @throws AdopterCatNotFoundException if the user with the specified id is not found
      * @see AdopterCatService
      */
     public AdopterCat update(AdopterCat adopterCat) {
@@ -93,7 +98,8 @@ public class AdopterCatService {
     }
 
     /**
-     * Метод находит всех пользователей
+     * The method finds all users
+     *
      * @return {@link AdopterCatRepository#findById(Object)}
      * @see AdopterCatService
      */

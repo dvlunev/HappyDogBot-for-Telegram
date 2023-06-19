@@ -5,7 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Интерфейс, содержащий методы для работы с базой данных усыновителей
+ * Interface containing methods for working with the database of adopters
+ *
  * @see AdopterCat
  * @see com.team4.happydogbot.service.AdopterCatService
  */

@@ -1,11 +1,11 @@
 package com.team4.happydogbot.constants;
 
 /**
- * Класс содержит константы с командами, которые может выполнить бот
+ * The class contains constants with commands that the bot can execute
  */
 public class BotCommands {
 
-    // Команды этап 0. Входная точка общения бота с пользователем
+    // Commands stage 0. The entry point of communication between the bot and the user
     public static final String START_CMD = "/start";
     public static final String SHELTER_CAT = "Приют для кошек";
     public static final String SHELTER_DOG = "Приют для собак";
@@ -17,12 +17,12 @@ public class BotCommands {
     public static final String CALL_VOLUNTEER_CMD = "Позвать волонтера";
     public static final String FINISH_VOLUNTEER_CMD = "Закончить разговор с волонтером";
 
-    // Команды этап 1. Вводная информация о приюте: где он находится, как и когда работает,
-    // какие правила пропуска на территорию приюта, правила нахождения внутри и общения с собаками.
+    // Commands stage 1. Introductory information about the shelter: where it is located, how and when it works,
+    // what are the rules for admission to the territory of the shelter, the rules for staying inside and communicating with dogs.
     public static final String SHELTER_ABOUT_CMD = "Общая информация о приюте";
     public static final String SHELTER_SCHEDULE_ADDRESS_CMD = "Расписание, адрес";
     public static final String SHELTER_SAFETY_CMD = "Техника безопасности";
-    public static final String CAR_PASS_CMD ="Пропуск на машину";
+    public static final String CAR_PASS_CMD = "Пропуск на машину";
     public static final String SEND_CONTACT_CMD = "Отправить свои контакты";
     public static final String BACK_CMD = "Назад";
 
@@ -35,8 +35,8 @@ public class BotCommands {
             CALL_VOLUNTEER_CMD
     };
 
-    // Команды этап 2. Помощь потенциальным «усыновителям» собаки из приюта
-    // с бюрократическими (как оформить договор) и бытовыми (как подготовиться к жизни с собакой) вопросами.
+    // Commands stage 2. Helping potential adopters of a dog from a shelter
+    // with bureaucratic (how to draw up a contract) and everyday (how to prepare for life with a dog) questions.
     public static final String PET_RULES_CMD = "Правила знакомства с животным";
     public static final String PET_DOCS_CMD = "Необходимые документы";
     public static final String PET_TRANSPORT_CMD = "Рекомендации по транспортировке";
@@ -85,13 +85,12 @@ public class BotCommands {
     };
 
 
-
-    //Команды этапа 3. Ведение питомца
+    // Commands stage 3. Keeping a Pet
     public static final String REPORT_FORM = "Форма ежедневного отчета";
     public static final String REPORT_EXAMPLE = "Образец отчета";
     public static final String SEND_REPORT = "Отправить отчет";
 
-    public static final String SEND_ATTENTION  = "”Дорогой усыновитель, мы заметили, что ты заполняешь " +
+    public static final String SEND_ATTENTION = "”Дорогой усыновитель, мы заметили, что ты заполняешь " +
             "отчет не так подробно, как необходимо. Пожалуйста, подойди ответственнее к этому занятию. " +
             "В противном случае, волонтеры приюта будут обязаны самолично проверять условия содержания собаки”";
 
@@ -102,13 +101,13 @@ public class BotCommands {
             CALL_VOLUNTEER_CMD
     };
 
-    // Решения по испытательному сроку
+    // Trial Decisions
 
     public static final String TAKE_DECISION = "Примите решение по итогу прохождения испытательного срока у пользователя: ";
     public static final String FINISH_PROBATION = "Испытательный срок пройден";
     public static final String EXTEND_PROBATION_14 = "Продлить на 14 дней";
-    public static final String EXTEND_PROBATION_30  = "Продлить на 30 дней";
-    public static final String REFUSE  = "Отказать в усыновлении";
+    public static final String EXTEND_PROBATION_30 = "Продлить на 30 дней";
+    public static final String REFUSE = "Отказать в усыновлении";
 
 
     public static final String[] KEYBOARD_DECISION = {

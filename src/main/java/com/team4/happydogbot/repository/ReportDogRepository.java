@@ -5,7 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Интерфейс, содержащий методы для работы с базой данных отчетов
+ * Interface containing methods for working with the reporting database
+ *
  * @see ReportDog
  * @see com.team4.happydogbot.service.ReportDogService
  */

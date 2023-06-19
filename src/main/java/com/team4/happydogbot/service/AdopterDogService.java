@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 /**
- * Класс - сервис, содержащий набор CRUD операций над объектом AdopterDog
+ * Service class containing a set of CRUD operations on the AdopterDog object
  *
  * @see AdopterDog
  * @see AdopterDogRepository
@@ -28,7 +28,7 @@ public class AdopterDogService {
     }
 
     /**
-     * Метод создает нового пользователя
+     * The method creates a new user
      *
      * @param adopterDog
      * @return {@link AdopterDogRepository#save(Object)}
@@ -41,11 +41,11 @@ public class AdopterDogService {
     }
 
     /**
-     * Метод находит и возвращает пользователя по id
+     * The method finds and returns the user by id
      *
      * @param id
      * @return {@link AdopterDogRepository#findById(Object)}
-     * @throws AdopterDogNotFoundException если пользователь с указанным id не найден
+     * @throws AdopterDogNotFoundException if the user with the specified id is not found
      * @see AdopterDogService
      */
     public AdopterDog get(Long id) {
@@ -56,11 +56,11 @@ public class AdopterDogService {
     }
 
     /**
-     * Метод находит и удаляет пользователя по id
+     * The method finds and deletes a user by id
      *
      * @param id
-     * @return true если удаление прошло успешно
-     * @throws AdopterDogNotFoundException если пользователь с указанным id не найден
+     * @return true if the removal was successful
+     * @throws AdopterDogNotFoundException if the user with the specified id is not found
      */
     public boolean remove(Long id) {
         log.info("Was invoked method to remove a adopterDog by id={}", id);
@@ -73,11 +73,11 @@ public class AdopterDogService {
     }
 
     /**
-     * Метод обновляет и возвращает пользователя
+     * The method updates and returns the user
      *
      * @param adopterDog
      * @return {@link AdopterDogRepository#save(Object)}
-     * @throws AdopterDogNotFoundException если пользователь с указанным id не найден
+     * @throws AdopterDogNotFoundException if the user with the specified id is not found
      * @see AdopterDogService
      */
     public AdopterDog update(AdopterDog adopterDog) {
@@ -100,7 +100,7 @@ public class AdopterDogService {
     }
 
     /**
-     * Метод находит всех пользователей
+     * The method finds all users
      *
      * @return {@link AdopterDogRepository#findById(Object)}
      * @see AdopterDogService

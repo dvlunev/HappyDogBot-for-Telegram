@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 /**
- * Класс - контроллер для объекта AdopterDog, содержащий набор API endpoints
- * для обращения к маршрутам отдельными HTTP методами
+ * A controller class for an AdopterDog object containing a set of API endpoints
+ * for accessing routes with separate HTTP methods
  *
  * @see AdopterDog
  * @see AdopterDogService
@@ -28,7 +28,7 @@ import java.util.Collection;
  */
 @RestController
 @RequestMapping("/adopter_dog")
-@Tag(name = "Усыновители", description = "CRUD-операции и другие эндпоинты для работы с усыновителями")
+@Tag(name = "Adopters", description = "CRUD operations and other endpoints for working with adopters")
 public class AdopterDogController {
 
     private final AdopterDogService adopterDogService;
@@ -38,13 +38,13 @@ public class AdopterDogController {
     }
 
     @Operation(
-            summary = "Добавление усыновителя",
-            description = "Добавление нового усыновителя из тела запроса"
+            summary = "Adding an adopter",
+            description = "Adding a new adopter from the request body"
     )
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Усыновитель был добавлен",
+                    description = "Adopter has been added",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -54,7 +54,7 @@ public class AdopterDogController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Некорректные параметры усыновителя",
+                    description = "Incorrect adopter parameters",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -70,11 +70,11 @@ public class AdopterDogController {
         return ResponseEntity.ok(adopterDog);
     }
 
-    @Operation(summary = "Получение усыновителя по chatId",
+    @Operation(summary = "Getting an adopter by chatId",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Усыновитель, найденный по chatId",
+                            description = "Adopter found by chatId",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = AdopterDog.class)
@@ -89,7 +89,7 @@ public class AdopterDogController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Усыновитель был найден",
+                    description = "The adopter was found",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -99,7 +99,7 @@ public class AdopterDogController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Усыновитель не был найден",
+                    description = "The adopter was not found",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -118,11 +118,11 @@ public class AdopterDogController {
         return ResponseEntity.ok(adopterDog);
     }
 
-    @Operation(summary = "Удаление усыновителя по chatId",
+    @Operation(summary = "Deleting an adopter by chatId",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Усыновитель, найденный по chatId",
+                            description = "Adopter found by chatId",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = AdopterDog.class)
@@ -137,11 +137,11 @@ public class AdopterDogController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Усыновитель удален"
+                    description = "Adopter removed"
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Усыновитель не был удален"
+                    description = "The adopter was not removed"
             )
     }
     )
@@ -154,13 +154,13 @@ public class AdopterDogController {
     }
 
     @Operation(
-            summary = "Изменение данных усыновителя",
-            description = "Обновление данных усыновителя из тела запроса"
+            summary = "Changing the details of the adopter",
+            description = "Updating the adopter data from the request body"
     )
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Данные усыновителя обновлены",
+                    description = "Adopter details updated",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -170,7 +170,7 @@ public class AdopterDogController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Данные усыновителя не обновлены",
+                    description = "Adopter data not updated",
                     content = {
                             @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -186,11 +186,11 @@ public class AdopterDogController {
         return ResponseEntity.ok(adopterDog);
     }
 
-    @Operation(summary = "Просмотр всех усыновителей",
+    @Operation(summary = "View all adopters",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Усыновители найдены",
+                            description = "Adopters found",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = AdopterDog.class)
@@ -204,11 +204,11 @@ public class AdopterDogController {
     }
 
     @GetMapping("/send_message")
-    @Operation(summary = "Отправка сообщения пользователю",
-            description = "Отправляет сообщение пользователю приюта через бота")
+    @Operation(summary = "Sending a message to a user",
+            description = "Sends a message to a shelter user through a bot")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Сообщение отправлено"),
-            @ApiResponse(responseCode = "404", description = "Пользователь с таким chatId не найден"),
+            @ApiResponse(responseCode = "200", description = "Message sent"),
+            @ApiResponse(responseCode = "404", description = "User with this chatId not found"),
     })
     public ResponseEntity<Void> sendMessage(Long chatId, String textToSend) {
         if (adopterDogService.get(chatId) != null) {

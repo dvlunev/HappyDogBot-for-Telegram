@@ -10,7 +10,8 @@ import static com.team4.happydogbot.constants.BotCommands.*;
 import static com.team4.happydogbot.constants.BotReplies.*;
 
 /**
- * Класс содержит мапы, в которых командам соответствуют реакции бота на эти команды
+ * The class contains maps in which commands correspond to the bot's reaction to these commands
+ *
  * @see com.team4.happydogbot.constants.BotCommands
  * @see com.team4.happydogbot.constants.BotReplies
  */
@@ -21,11 +22,13 @@ public class Reply {
     public Reply(Bot bot) {
         this.bot = bot;
     }
+
     /**
-     * В мапе ключ - это команда, значение - реакция на команду
-     * В этой мапе реакции на команду, если пользователь выбрал кошку
-     * */
+     * In the map, the key is the command, the value is the reaction to the command
+     * In this command reaction map, if the user has selected a cat
+     */
     public Map<String, Consumer<Long>> catReplies = new HashMap<>();
+
     {
         //Этап 0
         catReplies.put(PET_INFO_CMD, chatId -> bot.sendMessageWithInlineKeyboard(chatId, MESSAGE_TEXT_PET_INFO, KEYBOARD_CAT_ADOPT));
@@ -55,11 +58,12 @@ public class Reply {
     }
 
     /**
-     * В мапе ключ - это команда, значение - реакция на команду
-     * В этой мапе реакции на команду, если пользователь выбрал собаку,
-     * и реакции, которые не зависят от выбора собака или кошка
+     * In the map, the key is the command, the value is the reaction to the command
+     * In this command reaction map, if the user has selected a dog,
+     * and reactions that do not depend on the choice of dog or cat
      */
     public Map<String, Consumer<Long>> dogReplies = new HashMap<>();
+
     {
         //Этап 0
         dogReplies.put(SHELTER_CHOOSE, chatId -> bot.sendMessage(chatId, MESSAGE_TEXT_CHOOSE_SHELTER, bot.replyKeyboardShelter()));

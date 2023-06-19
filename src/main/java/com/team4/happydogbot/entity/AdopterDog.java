@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Класс, описывающий пользователя, как потенциального усыновителя собаки
- * @param 'status' поле для отображения статуса пользовательского состояния
- * (отображает этап или состояние, в котором находится пользователь)
+ * A class that describes the user as a potential adopter of a dog
+ *
+ * @param 'status' field to display user state status
+ *                 (displays the stage or state the user is in)
  * @see Dog
  * @see AdopterDog
  */
@@ -31,13 +32,13 @@ public class AdopterDog {
     private String firstName;
     @Column(name = "last_name", length = 25)
     private String lastName;
-    @Column(name = "user_name",  length = 25)
+    @Column(name = "user_name", length = 25)
     private String userName;
     @Column(name = "age")
     private int age;
     @Column(name = "address", length = 50)
     private String address;
-    @Column(name = "phone_number",  length = 15)
+    @Column(name = "phone_number", length = 15)
     private String telephoneNumber;
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

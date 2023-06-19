@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 /**
- * Класс - сервис, содержащий набор CRUD операций над объектом Cat
+ * Service class containing a set of CRUD operations on a Cat object
+ *
  * @see Cat
  * @see CatRepository
  */
@@ -25,7 +26,8 @@ public class CatService {
     }
 
     /**
-     * Метод создает нового кота
+     * The method creates a new cat
+     *
      * @param cat
      * @return {@link CatRepository#save(Object)}
      * @see CatService
@@ -36,10 +38,11 @@ public class CatService {
     }
 
     /**
-     * Метод находит и возвращает кота по id
+     * The method finds and returns a cat by id
+     *
      * @param id
      * @return {@link CatRepository#findById(Object)}
-     * @throws CatNotFoundException если кот с указанным id не найден
+     * @throws CatNotFoundException if the cat with the specified id is not found
      * @see CatService
      */
     public Cat get(Long id) {
@@ -49,9 +52,10 @@ public class CatService {
     }
 
     /**
-     * Метод находит и удаляет кота по id
+     * The method finds and removes a cat by id
+     *
      * @param id
-     * @throws CatNotFoundException если кот с указанным id не найден
+     * @throws CatNotFoundException if the cat with the specified id is not found
      * @see CatService
      */
     public boolean remove(Long id) {
@@ -67,10 +71,11 @@ public class CatService {
     }
 
     /**
-     * Метод обновляет и возвращает кота
+     * The method updates and returns the cat
+     *
      * @param cat
      * @return {@link CatRepository#save(Object)}
-     * @throws CatNotFoundException если кот с указанным id не найден
+     * @throws CatNotFoundException if the cat with the specified id is not found
      * @see CatService
      */
     public Cat update(Cat cat) {
@@ -87,7 +92,8 @@ public class CatService {
     }
 
     /**
-     * Метод находит и возвращает всех котов
+     * The method finds and returns all cats
+     *
      * @return {@link CatRepository#findAll()}
      * @see CatService
      */

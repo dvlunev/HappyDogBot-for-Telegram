@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Класс, описывающий пользователя, как потенциального усыновителя кота
- * @param 'status' поле для отображения статуса пользовательского состояния
- * (отображает этап или состояние, в котором находится пользователь)
+ * A class that describes the user as a potential adopter of a cat
+ *
+ * @param 'status' field to display user state status
+ *                 (displays the stage or state the user is in)
  * @see Cat
  * @see AdopterCat
  */

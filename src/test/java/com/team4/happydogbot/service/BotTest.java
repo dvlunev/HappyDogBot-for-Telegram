@@ -33,7 +33,7 @@ import static org.mockito.Mockito.when;
 
 
 /**
- * Тест - класс для проверки операций в классе - сервисе Bot
+ * Test class for checking operations in the Bot service class
  *
  * @see BotConfig
  * @see AdopterDogService
@@ -70,7 +70,7 @@ public class BotTest {
     private Reply reply = new Reply(bot);
 
     @Test
-    @DisplayName("Проверяем, что после нажатия на /start бот приветствует пользователя и предлагает выбрать приют")
+    @DisplayName("We check that after clicking on /start, the bot welcomes the user and offers to choose a shelter")
     public void StartTest() throws TelegramApiException {
         Update update = new Update();
         update.setMessage(new Message());
@@ -92,14 +92,14 @@ public class BotTest {
 
 
     /**
-     * Тестирование метода <b>sendFinishListForDogVolunteer()</b> в Bot<br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findAll</b>,
-     * возвращается список содержащий 1 усыновителя собаки <b>expected</b>
-     * со статусом PROBATION и датой изменеия статуса 31 день назад от текущей даты.<br>
-     * Кол-во вызовов метода <b>sendMessageWithInlineKeyboard</b> равно 1.
+     * Method Testing <b>sendFinishListForDogVolunteer()</b> in Bot<br>
+     * Mockito: when the method is called <b>AdopterDogRepository::findAll</b>,
+     * returns a list containing 1 dog's adopter <b>expected</b>
+     * with PROBATION status and status change date 31 days ago from the current date.<br>
+     * Number of method calls <b>sendMessageWithInlineKeyboard</b> equals 1.
      */
     @Test
-    @DisplayName("Проверка отправки по расписанию при наличии собачьих усыновителей с необходимым статусом")
+    @DisplayName("Checking scheduled shipments when there are dog adopters with the required status")
     public void testSendFinishListForDogVolunteer() throws Exception {
         AdopterDog expected = new AdopterDog();
 
@@ -126,14 +126,14 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>sendFinishListForDogVolunteer()</b> в Bot<br>
-     * Mockito: когда вызывается метод <b>AdopterDogRepository::findAll</b>,
-     * возвращается список содержащий 1 усыновителя собаки <b>expected</b>
-     * со статусом REGISTRATION и датой изменеия статуса 31 день назад от текущей даты.<br>
-     * Кол-во вызовов метода <b>sendMessageWithInlineKeyboard</b> равно 0.
+     * Method Testing <b>sendFinishListForDogVolunteer()</b> in Bot<br>
+     * Mockito: when the method is called <b>AdopterDogRepository::findAll</b>,
+     * returns a list containing 1 dog's adopter <b>expected</b>
+     * with REGISTRATION status and status change date 31 days ago from the current date.<br>
+     * Number of method calls <b>sendMessageWithInlineKeyboard</b> equals 0.
      */
     @Test
-    @DisplayName("Проверка неотправки по расписанию при отсутствии собачьих усыновителей с необходимым статусом")
+    @DisplayName("Checking for non-scheduled shipments in the absence of dog adopters with the required status")
     public void testSendFinishListForDogVolunteerWithoutAdopter() throws Exception {
         AdopterDog expected = new AdopterDog();
 
@@ -160,14 +160,14 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>sendFinishListForCatVolunteer()</b> в Bot<br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findAll</b>,
-     * возвращается список содержащий 1 усыновителя собаки <b>expected</b>
-     * со статусом PROBATION и датой изменеия статуса 31 день назад от текущей даты.<br>
-     * Кол-во вызовов метода <b>sendMessageWithInlineKeyboard</b> равно 1.
+     * Method Testing <b>sendFinishListForCatVolunteer()</b> in Bot<br>
+     * Mockito: when the method is called <b>AdopterCatRepository::findAll</b>,
+     * returns a list containing 1 dog's adopter <b>expected</b>
+     * with PROBATION status and status change date 31 days ago from the current date.<br>
+     * Number of method calls <b>sendMessageWithInlineKeyboard</b> equals 1.
      */
     @Test
-    @DisplayName("Проверка отправки по расписанию при наличии кошачих усыновителей с необходимым статусом")
+    @DisplayName("Checking planned shipments for feline adopters with the required status")
     public void testSendFinishListForCatVolunteer() throws Exception {
         AdopterCat expected = new AdopterCat();
 
@@ -193,14 +193,14 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>sendFinishListForCatVolunteer()</b> в Bot<br>
-     * Mockito: когда вызывается метод <b>AdopterCatRepository::findAll</b>,
-     * возвращается список содержащий 1 усыновителя собаки <b>expected</b>
-     * со статусом REGISTRATION и датой изменеия статуса 31 день назад от текущей даты.<br>
-     * Кол-во вызовов метода <b>sendMessageWithInlineKeyboard</b> равно 0.
+     * Method Testing <b>sendFinishListForCatVolunteer()</b> in Bot<br>
+     * Mockito: when the method is called <b>AdopterCatRepository::findAll</b>,
+     * returns a list containing 1 dog's adopter <b>expected</b>
+     * with REGISTRATION status and status change date 31 days ago from the current date.<br>
+     * Number of method calls <b>sendMessageWithInlineKeyboard</b> equals 0.
      */
     @Test
-    @DisplayName("Проверка неотправки по расписанию при отсутствии кошачих усыновителей с необходимым статусом")
+    @DisplayName("Checking for non-scheduled shipments in the absence of feline adopters with the required status")
     public void testSendFinishListForCatVolunteerWithoutAdopter() throws Exception {
         AdopterCat expected = new AdopterCat();
 
@@ -226,18 +226,18 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>changeDogAdopterStatus()</b> в Bot<br>
+     * Method Testing <b>changeDogAdopterStatus()</b> in Bot<br>
      * Mockito: <br>
-     * - когда вызывается метод <b>AdopterDogRepository::findAll</b>;<br>
-     * возвращается список содержащий 1 усыновителя собаки <b>expected</b>
-     * со статусом <b>REGISTRATION</b>;<br>
-     * - когда вызывается метод <b>AdopterDogService::get</b>,
-     * возвращает по id 1 усыновителя собаки <b>expected</b><br>
-     * - проверка <b>assertThat</b> успешного иземенения статуса усыновителя на <b>ADDITIONAL_PERIOD_14</b>;<br>
-     * - кол-во вызовов метода <b>sendMessage</b> равно 2.
+     * - when the method is called <b>AdopterDogRepository::findAll</b>;<br>
+     * returns a list containing 1 dog's adopter <b>expected</b>
+     * with status <b>REGISTRATION</b>;<br>
+     * - when the method is called <b>AdopterDogService::get</b>,
+     * returns dog adopter by id 1 <b>expected</b><br>
+     * - examination <b>assertThat</b> of successfully changing the status of the adopter to <b>ADDITIONAL_PERIOD_14</b>;<br>
+     * - number of method calls <b>sendMessage</b> equals 2.
      */
     @Test
-    @DisplayName("Проверка смены статуса собачьего усыновителя")
+    @DisplayName("Checking the status of a dog adopter")
     public void testChangeDogAdopterStatus() throws Exception {
         String messageText = "chatId: 1";
         AdopterDog expected = new AdopterDog();
@@ -257,22 +257,22 @@ public class BotTest {
 
         Assertions.assertThat(expected.getState().compareTo(ADDITIONAL_PERIOD_14));
         Mockito.verify(bot, Mockito.times(2))
-                .sendMessage(anyLong(),any());
+                .sendMessage(anyLong(), any());
     }
 
     /**
-     * Тестирование метода <b>changeDogAdopterStatus()</b> в Bot<br>
+     * Method Testing <b>changeDogAdopterStatus()</b> in Bot<br>
      * Mockito: <br>
-     * - когда вызывается метод <b>AdopterDogRepository::findAll</b>;<br>
-     * возвращается список содержащий 1 усыновителя собаки <b>expected</b>
-     * со статусом <b>REGISTRATION</b>;<br>
-     * - когда вызывается метод <b>AdopterDogService::get</b>,
-     * возвращает по id 1 усыновителя собаки <b>expected</b><br>
-     * - проверка <b>assertThat</b> успешного иземенения статуса усыновителя на <b>ADDITIONAL_PERIOD_14</b>;<br>
-     * - кол-во вызовов метода <b>sendMessage</b> равно 2.
+     * - when the method is called <b>AdopterDogRepository::findAll</b>;<br>
+     * returns a list containing 1 dog's adopter <b>expected</b>
+     * with status <b>REGISTRATION</b>;<br>
+     * - when the method is called <b>AdopterDogService::get</b>,
+     * returns dog adopter by id 1 <b>expected</b><br>
+     * - examination <b>assertThat</b> of successfully changing the status of the adopter to <b>ADDITIONAL_PERIOD_14</b>;<br>
+     * - number of method calls <b>sendMessage</b> equals 2.
      */
     @Test
-    @DisplayName("Проверка смены статуса кошачьего усыновителя")
+    @DisplayName("Checking the status change of the cat's adoptive parent")
     public void testChangeCatAdopterStatus() throws Exception {
         String messageText = " chatId: 1";
         AdopterCat expected = new AdopterCat();
@@ -292,11 +292,11 @@ public class BotTest {
 
         Assertions.assertThat(expected.getState().compareTo(ADDITIONAL_PERIOD_14));
         Mockito.verify(bot, Mockito.times(2))
-                .sendMessage(anyLong(),any());
+                .sendMessage(anyLong(), any());
     }
 
     @Test
-    @DisplayName("Проверка отправки уведомления для волонтера и собачьего усыновителя")
+    @DisplayName("Verification of notification sent to volunteer and dog adopter")
     public void testSendAttentionForDogVolunteerAndAdopterDog() throws Exception {
         AdopterDog expected1 = new AdopterDog();
         AdopterDog expected2 = new AdopterDog();
@@ -360,7 +360,7 @@ public class BotTest {
         report3.setExamination(ExaminationStatus.ACCEPTED);
 
 
-        when(reportDogRepository.findAll()).thenReturn(List.of(report1,report2,report3));
+        when(reportDogRepository.findAll()).thenReturn(List.of(report1, report2, report3));
 
         bot.sendAttentionForDogVolunteerAndAdopterDog();
 
@@ -381,7 +381,7 @@ public class BotTest {
     }
 
     @Test
-    @DisplayName("Проверка отправки уведомления для волонтера и собачьего усыновителя")
+    @DisplayName("Verification of notification sent to volunteer and dog adopter")
     public void testSendAttentionForCatVolunteerAndAdopterCat() throws Exception {
         AdopterCat expected1 = new AdopterCat();
         AdopterCat expected2 = new AdopterCat();
@@ -445,7 +445,7 @@ public class BotTest {
         report3.setExamination(ExaminationStatus.ACCEPTED);
 
 
-        when(reportCatRepository.findAll()).thenReturn(List.of(report1,report2,report3));
+        when(reportCatRepository.findAll()).thenReturn(List.of(report1, report2, report3));
 
         bot.sendAttentionForCatVolunteerAndAdopterCat();
 
@@ -458,20 +458,20 @@ public class BotTest {
 
         verify(bot, Mockito.times(1))
                 .sendMessage(0L, "Внимание! Усыновитель " + expected3.getFirstName()
-                                + " " + expected3.getLastName() + ", username: " + expected3.getUserName()
-                                + ", chatId: " + expected3.getChatId() + " уже больше 2 дней не присылает отчеты!");
+                        + " " + expected3.getLastName() + ", username: " + expected3.getUserName()
+                        + ", chatId: " + expected3.getChatId() + " уже больше 2 дней не присылает отчеты!");
         Mockito.verify(bot, Mockito.times(3))
                 .sendMessage(anyLong(), eq(MESSAGE_ATTENTION_REPORT));
     }
 
     /**
-     * Тестирование метода <b>getReport()</b> в Bot, если картинка отправлена как фото<br>
-     * Mockito: когда вызывается метод <b>adopterDogRepository::findAdopterDogByChatId</b>,
-     * возвращается необходимый усыновитель собак <b>adopterDog</b>
-     * - проверка <b>assertThat</b> успешного сохранения отчета по всем полям
+     * Method Testing <b>getReport()</b> in the Bot if the picture is sent as a photo<br>
+     * Mockito: when the method is called <b>adopterDogRepository::findAdopterDogByChatId</b>,
+     * needed dog adopter returns <b>adopterDog</b>
+     * - examination <b>assertThat</b> of successful saving of the report on all fields
      */
     @Test
-    @DisplayName("Проверка сохранения отчета, если фото отправлено как фото")
+    @DisplayName("Checking if the report is saved if the photo is sent as a photo")
     public void getReportDogTestAsPhoto() {
         Update update = new Update();
         update.setMessage(new Message());
@@ -506,13 +506,13 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>getReport()</b> в Bot, если картинка отправлена как фото<br>
-     * Mockito: когда вызывается метод <b>adopterDogRepository::findAdopterDogByChatId</b>,
-     * возвращается необходимый усыновитель собак <b>adopterDog</b>
-     * - проверка <b>assertThat</b> успешного сохранения отчета по всем полям
+     * Method Testing <b>getReport()</b> in the Bot if the picture is sent as a photo<br>
+     * Mockito: when the method is called <b>adopterDogRepository::findAdopterDogByChatId</b>,
+     * needed dog adopter returns <b>adopterDog</b>
+     * - examination <b>assertThat</b> of successful saving of the report on all fields
      */
     @Test
-    @DisplayName("Проверка сохранения отчета, если фото отправлено как документ")
+    @DisplayName("Checking if the report is saved if the photo is sent as a document")
     public void getReportCatTestAsDocument() {
         Update update = new Update();
         update.setMessage(new Message());
@@ -545,10 +545,10 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>getReport()</b> в Bot, если подпись к фото не прошла валидацию<br>
+     * Method Testing <b>getReport()</b> in the Bot if the caption for the photo did not pass validation<br>
      */
     @Test
-    @DisplayName("Проверка сохранения отчета, если подпись к фото не прошла валидацию - отчет на сохранен")
+    @DisplayName("Checking if the report is saved, if the caption for the photo is not validated - the report is not saved")
     public void getReportTestWithIncorrectCaption() {
         Update update = new Update();
         update.setMessage(new Message());
@@ -560,13 +560,13 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>changeUserStatusOfShelter()</b> в Bot, если новый пользователь выбрал приют для собак<br>
-     * Mockito: когда вызывается метод <b>adopterDogRepository::findAdopterDogByChatId</b> возвращается <b>null</b>
-     * , когда вызывается метод <b>adopterCatRepository::findAdopterCatByChatId</b> возвращается <b>null</b>
-     * - проверка <b>assertThat</b> успешного изменения статуса у усыновителя
+     * Method Testing <b>changeUserStatusOfShelter()</b> in the Bot if the new user has selected a dog shelter<br>
+     * Mockito: when the method is called <b>adopterDogRepository::findAdopterDogByChatId</b> returns <b>null</b>
+     * , when the method is called <b>adopterCatRepository::findAdopterCatByChatId</b> returns <b>null</b>
+     * - examination <b>assertThat</b> of successful change of status with the adopter
      */
     @Test
-    @DisplayName("Проверка изменения статуса пользователя на приют для собак, новый пользователь")
+    @DisplayName("Checking user status change to dog shelter, new user")
     public void changeUserStatusOfShelterToDogNewUserTest() {
         Long chatId = 123L;
         boolean isDog = true;
@@ -587,13 +587,13 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>changeUserStatusOfShelter()</b> в Bot, если пользователь был в приюте для кошек и выбрал приют для собак<br>
-     * Mockito: когда вызывается метод <b>adopterDogRepository::findAdopterDogByChatId</b> возвращается <b>null</b>
-     * , когда вызывается метод <b>adopterCatRepository::findAdopterCatByChatId</b> возвращается усыновитель кошек <b>adopterCat</b>
-     * - проверка <b>assertThat</b> успешного изменения статуса у усыновителя
+     * Method Testing <b>changeUserStatusOfShelter()</b> in the Bot if the user was in a cat shelter and chose a dog shelter<br>
+     * Mockito: when the method is called <b>adopterDogRepository::findAdopterDogByChatId</b> returns <b>null</b>
+     * , when the method is called <b>adopterCatRepository::findAdopterCatByChatId</b> cat adopter returns <b>adopterCat</b>
+     * - examination <b>assertThat</b> of successful change of status with the adopter
      */
     @Test
-    @DisplayName("Проверка изменения статуса пользователя на приют для собак, пользователь уже был в приюте кошек")
+    @DisplayName("Checking if the user's status has changed to a dog shelter, the user has already been to a cat shelter")
     public void changeUserStatusOfShelterToDogWhenWasCatTest() {
         Long chatId = 123L;
         boolean isDog = true;
@@ -624,13 +624,13 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>changeUserStatusOfShelter()</b> в Bot, если новый пользователь выбрал приют для кошек<br>
-     * Mockito: когда вызывается метод <b>adopterDogRepository::findAdopterDogByChatId</b> возвращается <b>null</b>
-     * , когда вызывается метод <b>adopterCatRepository::findAdopterCatByChatId</b> возвращается <b>null</b>
-     * - проверка <b>assertThat</b> успешного изменения статуса у усыновителя
+     * Method Testing <b>changeUserStatusOfShelter()</b> in Bot if a new user has chosen a cat shelter<br>
+     * Mockito: when the method is called <b>adopterDogRepository::findAdopterDogByChatId</b> returns <b>null</b>
+     * , when the method is called <b>adopterCatRepository::findAdopterCatByChatId</b> returns <b>null</b>
+     * - examination <b>assertThat</b> of successful change of status with the adopter
      */
     @Test
-    @DisplayName("Проверка изменения статуса пользователя на приют для кошек, новый пользователь")
+    @DisplayName("Checking user status change to cat shelter, new user")
     public void changeUserStatusOfShelterToCatNewUserTest() {
         Long chatId = 123L;
         boolean isDog = false;
@@ -651,13 +651,13 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>changeUserStatusOfShelter()</b> в Bot, если пользователь был в приюте для собак и выбрал приют для кошек<br>
-     * Mockito: когда вызывается метод <b>adopterDogRepository::findAdopterDogByChatId</b> возвращается усыновитель собак <b>adopterDog</b>
-     * , когда вызывается метод <b>adopterCatRepository::findAdopterCatByChatId</b> возвращается <b>null</b>
-     * - проверка <b>assertThat</b> успешного изменения статуса у усыновителя
+     * Method Testing <b>changeUserStatusOfShelter()</b> in the Bot if the user was in a dog shelter and chose a cat shelter<br>
+     * Mockito: when the method is called <b>adopterDogRepository::findAdopterDogByChatId</b> dog adopter returns <b>adopterDog</b>
+     * , when the method is called <b>adopterCatRepository::findAdopterCatByChatId</b> returns <b>null</b>
+     * - examination <b>assertThat</b> of successful change of status with the adopter
      */
     @Test
-    @DisplayName("Проверка изменения статуса пользователя на приют для кошек, пользователь уже был в приюте собак")
+    @DisplayName("Checking for a user status change to a cat shelter, the user has already been to a dog shelter")
     public void changeUserStatusOfShelterToCatWhenWasDogTest() {
         Long chatId = 123L;
         boolean isDog = false;
@@ -688,16 +688,16 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>forwardMessageToVolunteer()</b> в Bot<br>
-     * - проверка <b>assertThat</b> успешного перенаправления сообщения пользователю
+     * Method Testing <b>forwardMessageToVolunteer()</b> in Bot<br>
+     * - examination <b>assertThat</b> successful redirect message to user
      */
     @Test
-    @DisplayName("Проверка метода пересылки сообщения волонтеру от пользователя")
+    @DisplayName("Checking the method of forwarding a message to a volunteer from a user")
     public void forwardMessageToVolunteerTest() throws TelegramApiException {
         Long chatId = 123L;
         int messageId = 456;
 
-        bot.forwardMessageToVolunteer(chatId,messageId);
+        bot.forwardMessageToVolunteer(chatId, messageId);
 
         ArgumentCaptor<ForwardMessage> argumentCaptor = ArgumentCaptor.forClass(ForwardMessage.class);
         verify(bot).execute(argumentCaptor.capture());
@@ -707,11 +707,11 @@ public class BotTest {
     }
 
     /**
-     * Тестирование метода <b>talkWithVolunteerOrNoSuchCommand()</b> в Bot<br>
-     * - проверка <b>assertThat</b> успешного направления сообщения пользователю что нет такой команды
+     * Method Testing <b>talkWithVolunteerOrNoSuchCommand()</b> in Bot<br>
+     * - examination <b>assertThat</b> successfully sending a message to the user that there is no such command
      */
     @Test
-    @DisplayName("Проверка метода разговора с волонтером, нет такой команды")
+    @DisplayName("Checking the method of speaking with a volunteer, there is no such command")
     public void talkWithVolunteerOrNoSuchCommandTest() throws TelegramApiException {
         Update update = new Update();
         update.setMessage(new Message());

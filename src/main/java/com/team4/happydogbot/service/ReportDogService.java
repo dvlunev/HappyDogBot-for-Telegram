@@ -15,7 +15,8 @@ import java.nio.file.Files;
 import java.util.Collection;
 
 /**
- *Класс - сервис, содержащий набор CRUD операций над объектом ReportDog
+ * Service class containing a set of CRUD operations on the ReportDog object
+ *
  * @see ReportDog
  * @see ReportDogRepository
  */
@@ -32,7 +33,8 @@ public class ReportDogService {
     }
 
     /**
-     * Метод сохраняет отчет пользователя
+     * The method saves the user's report
+     *
      * @param reportDog
      * @return {@link ReportDogRepository#save(Object)}
      * @see ReportDogService
@@ -44,10 +46,11 @@ public class ReportDogService {
     }
 
     /**
-     * Метод находит и возвращает отчет по id
+     * The method finds and returns a report by id
+     *
      * @param id
      * @return {@link ReportDogRepository#findById(Object)}
-     * @throws ReportDogNotFoundException если отчет с указанным id не найден
+     * @throws ReportDogNotFoundException if the report with the specified id is not found
      * @see ReportDogService
      */
     public ReportDog get(Long id) {
@@ -58,10 +61,11 @@ public class ReportDogService {
     }
 
     /**
-     * Метод находит и удаляет отчет по id
+     * The method finds and deletes a report by id
+     *
      * @param id
-     * @return true если удаление прошло успешно
-     * @throws ReportDogNotFoundException если отчет с указанным id не найден
+     * @return true if the removal was successful
+     * @throws ReportDogNotFoundException if the report with the specified id is not found
      * @see ReportDogService
      */
     public boolean remove(Long id) {
@@ -75,10 +79,11 @@ public class ReportDogService {
     }
 
     /**
-     * Метод обновляет и возвращает отчет
+     * The method updates and returns the report
+     *
      * @param reportDog
      * @return {@link ReportDogRepository#save(Object)}
-     * @throws ReportDogNotFoundException если отчет с указанным id не найден
+     * @throws ReportDogNotFoundException if the report with the specified id is not found
      * @see ReportDogService
      */
     public ReportDog update(ReportDog reportDog) {
@@ -96,7 +101,8 @@ public class ReportDogService {
     }
 
     /**
-     * Метод находит и возвращает все отчеты
+     * The method finds and returns all reports
+     *
      * @return {@link ReportDogRepository#findAll()}
      * @see ReportDogService
      */
@@ -107,10 +113,11 @@ public class ReportDogService {
     }
 
     /**
-     * Метод находит в базе данных fileId фотографии к отчету, делает запрос Telegram на получение файла фотографии,
-     * получает фотографию, читает и возвращает byte фотографии
+     * The method finds the fileId of the photo for the report in the database, makes a Telegram request to receive the photo file,
+     * receives a photo, reads and returns a byte of the photo
+     *
      * @param id
-     * @return byte фотографии
+     * @return byte of the photo
      */
     public byte[] getFile(Long id) {
         log.info("Was invoked method to get a photo of the report by id={}", id);
